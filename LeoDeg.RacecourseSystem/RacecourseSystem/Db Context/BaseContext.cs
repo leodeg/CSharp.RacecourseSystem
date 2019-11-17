@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace RacecourseSystem.Context
 {
-	class PersonContext : DbContext
+	public class BaseContext<T> : DbContext where T : class
 	{
-		public PersonContext () : base ("RacecourseDB")
+		public BaseContext () : base ("RacecourseDB")
 		{
 
 		}
 
-		public DbSet<Person> Persons { get; set; }
+		public DbSet<T> DbSet { get; set; }
 	}
 }

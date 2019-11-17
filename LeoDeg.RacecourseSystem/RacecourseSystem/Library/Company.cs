@@ -8,7 +8,7 @@ namespace RacecourseSystem
 {
 	public enum CompanyType { Racecourse, HorseFactory }
 
-	public class Company
+	public class Company : IIdentifier
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

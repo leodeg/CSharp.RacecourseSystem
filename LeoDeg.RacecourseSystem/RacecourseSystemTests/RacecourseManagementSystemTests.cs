@@ -22,10 +22,10 @@ namespace RacecourseSystem.Tests
 		[Test]
 		public void AddCompanyTest ()
 		{
-			managementSystem.AddCompany (new Company ());
-			managementSystem.AddCompany (new Company ());
-			managementSystem.AddCompany (new Company ());
-			int actual = managementSystem.GetCompaniesCount ();
+			managementSystem.Library.Companies.Add (new Company ());
+			managementSystem.Library.Companies.Add (new Company ());
+			managementSystem.Library.Companies.Add (new Company ());
+			int actual = managementSystem.Library.Companies.GetCount ();
 			Assert.AreEqual (3, actual);
 		}
 	}
