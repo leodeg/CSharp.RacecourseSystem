@@ -1,6 +1,7 @@
 ﻿using RacecourseSystem.Context;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
@@ -13,8 +14,20 @@ namespace RacecourseSystem
 	/// Class wrapper for DbContext.
 	/// </summary>
 	/// <typeparam name="TEntity">class for base context that is DbContext wrapper</typeparam>
-	public class DbContextEntityCollection<TEntity> where TEntity : class
+	public class DbContextEntityCollection<TEntity> : IDisposable where TEntity : class
 	{
+		public BaseContext<TEntity> Context { get; set; }
+
+		public void Initialize ()
+		{
+			Context = new BaseContext<TEntity> ();
+		}
+
+		public void Dispose ()
+		{
+			Context.Dispose ();
+		}
+
 		/// <summary>
 		/// Add entity to the database.
 		/// </summary>
@@ -37,6 +50,14 @@ namespace RacecourseSystem
 			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
 			{
 				return db.DbSet;
+			}
+		}
+
+		public BindingList<TEntity> GetBindingList ()
+		{
+			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			{
+				return db.DbSet.Local.ToBindingList ();
 			}
 		}
 

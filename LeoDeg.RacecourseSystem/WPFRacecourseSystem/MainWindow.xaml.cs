@@ -1,5 +1,8 @@
-﻿using System;
+﻿using RacecourseSystem;
+using RacecourseSystem.Context;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,26 @@ namespace WPFRacecourseSystem
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		RacecourseManagementSystem managementSystem;
+
+
 		public MainWindow ()
 		{
 			InitializeComponent ();
+
+			managementSystem = new RacecourseManagementSystem ();
+			managementSystem.Library.Companies.Initialize ();
+		}
+
+
+
+		private void TabControl_SelectionChanged (object sender, SelectionChangedEventArgs e)
+		{
+			if (CompaniesTab.IsSelected)
+			{
+				managementSystem.Library.Companies.Context.DbSet.Load ();
+				CompaniesGrid.ItemsSource = managementSystem.Library.Companies.Context.DbSet.Local.ToBindingList ();
+			}
 		}
 	}
 }
