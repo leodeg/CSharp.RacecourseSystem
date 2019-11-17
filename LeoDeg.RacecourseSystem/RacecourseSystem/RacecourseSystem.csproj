@@ -54,9 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Db Context\DbContextEntityCollection.cs" />
-    <Compile Include="Db Context\BaseContext.cs" />
-    <Compile Include="Db Context\ExtensionsMethods.cs" />
+    <Compile Include="DbContext\DbContextEntityCollection.cs" />
+    <Compile Include="DbContext\BaseContext.cs" />
+    <Compile Include="DbContext\ExtensionsMethods.cs" />
     <Compile Include="Library\Company.cs" />
     <Compile Include="Library\Contest.cs" />
     <Compile Include="Library\Horse.cs" />
