@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Db Context\DbContextEntityCollection.cs" />
     <Compile Include="Db Context\BaseContext.cs" />
+    <Compile Include="Db Context\ExtensionsMethods.cs" />
     <Compile Include="Library\Company.cs" />
     <Compile Include="Library\Contest.cs" />
     <Compile Include="Library\Horse.cs" />

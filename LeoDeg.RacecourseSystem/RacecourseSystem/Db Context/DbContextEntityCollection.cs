@@ -80,5 +80,14 @@ namespace RacecourseSystem
 				db.Entry (entity).CurrentValues.SetValues (entity);
 			}
 		}
+
+		public void Clear ()
+		{
+			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			{
+				db.DbSet.Clear ();
+				db.SaveChanges ();
+			}
+		}
 	}
 }
