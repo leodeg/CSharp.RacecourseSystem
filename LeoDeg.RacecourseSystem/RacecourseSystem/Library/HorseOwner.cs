@@ -8,6 +8,7 @@ namespace RacecourseSystem
 {
 	public class HorseOwner : Person
 	{
-		public int HorseCount;
+		public List<Horse> Horses { get; set; }
+		public int HorseCount { get { return Horses.Count; } }
 	}
 }

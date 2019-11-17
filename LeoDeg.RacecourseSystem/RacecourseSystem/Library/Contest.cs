@@ -8,6 +8,7 @@ namespace RacecourseSystem
 {
 	public class Contest
 	{
+		public int Id { get; set; }
 		public string Title { get; set; }
 		public string HorsesBreed { get; set; }
 		public int HorseAge { get; set; }
