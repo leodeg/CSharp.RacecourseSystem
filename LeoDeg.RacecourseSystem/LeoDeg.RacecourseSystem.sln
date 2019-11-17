@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RacecourseSystem", "RacecourseSystem\RacecourseSystem.csproj", "{D68F8F47-A94C-4FDB-9970-C1803C3B7D1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RacecourseSystemTests", "RacecourseSystemTests\RacecourseSystemTests.csproj", "{248124AC-0661-48B1-B4C9-E7613C2EC3E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D68F8F47-A94C-4FDB-9970-C1803C3B7D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D68F8F47-A94C-4FDB-9970-C1803C3B7D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D68F8F47-A94C-4FDB-9970-C1803C3B7D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248124AC-0661-48B1-B4C9-E7613C2EC3E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248124AC-0661-48B1-B4C9-E7613C2EC3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248124AC-0661-48B1-B4C9-E7613C2EC3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248124AC-0661-48B1-B4C9-E7613C2EC3E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

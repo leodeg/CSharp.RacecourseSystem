@@ -10,7 +10,7 @@ namespace RacecourseSystem.Context
 
 	class HorseContext : DbContext
 	{
-		public HorseContext () : base ("DbConnection")
+		public HorseContext () : base ("RacecourseDB")
 		{
 
 		}

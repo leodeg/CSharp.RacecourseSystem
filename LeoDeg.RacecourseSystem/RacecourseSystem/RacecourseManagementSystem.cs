@@ -19,11 +19,28 @@ namespace RacecourseSystem
 
 		}
 
-		public void AddCompany (Company company, CompanyType type)
+		public void AddCompany (Company company)
 		{
 			using (CompanyContext db = new CompanyContext ())
 			{
 				db.Companies.Add (company);
+				db.SaveChanges ();
+			}
+		}
+
+		public IEnumerable<Company> GetCompanies ()
+		{
+			using (CompanyContext db = new CompanyContext ())
+			{
+				return db.Companies;
+			}
+		}
+
+		public int GetCompaniesCount ()
+		{
+			using (CompanyContext db = new CompanyContext ())
+			{
+				return db.Companies.Count ();
 			}
 		}
 
@@ -32,6 +49,7 @@ namespace RacecourseSystem
 			using (ContestContext db = new ContestContext ())
 			{
 				db.Contests.Add (contest);
+				db.SaveChanges ();
 			}
 		}
 
@@ -40,6 +58,7 @@ namespace RacecourseSystem
 			using (HorseContext db = new HorseContext ())
 			{
 				db.Horses.Add (horse);
+				db.SaveChanges ();
 			}
 		}
 
@@ -48,6 +67,7 @@ namespace RacecourseSystem
 			using (HorseOwnerContext db = new HorseOwnerContext ())
 			{
 				db.HorseOwners.Add (horseOwner);
+				db.SaveChanges ();
 			}
 		}
 
@@ -56,6 +76,7 @@ namespace RacecourseSystem
 			using (ParticipantContext db = new ParticipantContext ())
 			{
 				db.Participants.Add (participant);
+				db.SaveChanges ();
 			}
 		}
 

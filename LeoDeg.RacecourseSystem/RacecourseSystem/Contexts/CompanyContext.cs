@@ -10,7 +10,7 @@ namespace RacecourseSystem.Context
 
 	class CompanyContext : DbContext
 	{
-		public CompanyContext () : base ("DbConnection")
+		public CompanyContext () : base ("RacecourseDB")
 		{
 
 		}

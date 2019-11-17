@@ -9,7 +9,7 @@ namespace RacecourseSystem.Context
 {
 	class PersonContext : DbContext
 	{
-		public PersonContext () : base ("DbConnection")
+		public PersonContext () : base ("RacecourseDB")
 		{
 
 		}
