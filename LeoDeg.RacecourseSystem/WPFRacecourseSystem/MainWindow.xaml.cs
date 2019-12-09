@@ -25,7 +25,6 @@ namespace WPFRacecourseSystem
 	{
 		RacecourseManagementSystem managementSystem;
 
-
 		public MainWindow ()
 		{
 			InitializeComponent ();
@@ -34,14 +33,12 @@ namespace WPFRacecourseSystem
 			managementSystem.Library.Companies.Initialize ();
 		}
 
-
-
 		private void TabControl_SelectionChanged (object sender, SelectionChangedEventArgs e)
 		{
 			if (CompaniesTab.IsSelected)
 			{
-				managementSystem.Library.Companies.Context.DbSet.Load ();
-				CompaniesGrid.ItemsSource = managementSystem.Library.Companies.Context.DbSet.Local.ToBindingList ();
+				managementSystem.Library.Companies.Load ();
+				CompaniesGrid.ItemsSource = managementSystem.Library.Companies.ToBindingList ();
 			}
 		}
 	}

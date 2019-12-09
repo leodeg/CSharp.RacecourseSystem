@@ -8,7 +8,7 @@ namespace RacecourseSystem
 {
 	public enum Sex { Male, Female }
 
-	public class Person : IIdentifier
+	public class Person : ID
 	{
 		public int Id { get; set; }
 		public string FirstName { get; set; }

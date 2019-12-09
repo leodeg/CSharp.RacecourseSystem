@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacecourseSystem
 {
-	public class Contest : IIdentifier
+	public class Contest : ID
 	{
 		public int Id { get; set; }
 		public string Title { get; set; }

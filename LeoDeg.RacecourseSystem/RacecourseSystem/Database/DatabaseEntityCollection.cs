@@ -14,9 +14,9 @@ namespace RacecourseSystem
 	/// Class wrapper for DbContext.
 	/// </summary>
 	/// <typeparam name="TEntity">class for base context that is DbContext wrapper</typeparam>
-	public class DbContextEntityCollection<TEntity> : IDisposable where TEntity : class
+	public class DatabaseEntityCollection<TEntity> : IDisposable where TEntity : class
 	{
-		public BaseContext<TEntity> Context { get; set; }
+		private BaseContext<TEntity> Context { get; set; }
 
 		public void Initialize ()
 		{
@@ -26,6 +26,22 @@ namespace RacecourseSystem
 		public void Dispose ()
 		{
 			Context.Dispose ();
+		}
+
+		/// <summary>
+		/// Load date from the database.
+		/// </summary>
+		public void Load ()
+		{
+			Context.DbSet.Load ();
+		}
+
+		/// <summary>
+		/// Return binding list of the current entity.
+		/// </summary>
+		public BindingList<TEntity> ToBindingList ()
+		{
+			return Context.DbSet.Local.ToBindingList ();
 		}
 
 		/// <summary>

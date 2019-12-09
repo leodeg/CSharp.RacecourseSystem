@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacecourseSystem
 {
-	public interface IIdentifier
+	public interface ID
 	{
 		int Id { get; set; }
 	}

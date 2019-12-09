@@ -54,14 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContext\DbContextEntityCollection.cs" />
-    <Compile Include="DbContext\BaseContext.cs" />
-    <Compile Include="DbContext\ExtensionsMethods.cs" />
+    <Compile Include="Database\DatabaseEntityCollection.cs" />
+    <Compile Include="Database\BaseContext.cs" />
+    <Compile Include="Database\ExtensionsMethods.cs" />
     <Compile Include="Library\Company.cs" />
     <Compile Include="Library\Contest.cs" />
     <Compile Include="Library\Horse.cs" />
     <Compile Include="Library\HorseOwner.cs" />
-    <Compile Include="Library\IIdentifier.cs" />
+    <Compile Include="Library\ID.cs" />
     <Compile Include="Library\Participant.cs" />
     <Compile Include="Library\Person.cs" />
     <Compile Include="RacecourseLibrary.cs" />
