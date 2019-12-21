@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="RacecourseDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ContestParticipant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contest_Id" Type="int" Nullable="false" />
+          <Property Name="Horse_Id" Type="int" Nullable="false" />
+          <Property Name="Jockey_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Contests">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,8 +21,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="HorsesBreed" Type="nvarchar" MaxLength="50" />
-          <Property Name="HorseAge" Type="int" Nullable="false" />
-          <Property Name="PrizePool" Type="bigint" Nullable="false" />
+          <Property Name="HorseAge" Type="int" />
+          <Property Name="PrizePool" Type="bigint" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="HorseFactories">
@@ -38,6 +47,22 @@
           <Property Name="Sex" Type="int" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Horses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HorseFactory_Id" Type="int" />
+          <Property Name="Trainer_Id" Type="int" />
+          <Property Name="Owner_Id" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Breed" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Sex" Type="int" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="Jockeys">
           <Key>
             <PropertyRef Name="Id" />
@@ -49,8 +74,8 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
-          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Sex" Type="int" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Racecourses">
@@ -60,7 +85,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
-          <Property Name="HorseAmount" Type="int" Nullable="false" />
+          <Property Name="HorseAmount" Type="int" />
           <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Trainers">
@@ -74,23 +99,88 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
-          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Sex" Type="int" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Horses_HorseFactories">
+          <End Role="HorseFactories" Type="Self.HorseFactories" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorseFactories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="HorseFactory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_HorseOwners">
+          <End Role="HorseOwners" Type="Self.HorseOwners" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorseOwners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_Trainers">
+          <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="Trainer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RacecourseDBModelStoreContainer">
+          <EntitySet Name="ContestParticipant" EntityType="Self.ContestParticipant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contests" EntityType="Self.Contests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HorseFactories" EntityType="Self.HorseFactories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HorseOwners" EntityType="Self.HorseOwners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horses" EntityType="Self.Horses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jockeys" EntityType="Self.Jockeys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Racecourses" EntityType="Self.Racecourses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Horses_HorseFactories" Association="Self.FK_Horses_HorseFactories">
+            <End Role="HorseFactories" EntitySet="HorseFactories" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_HorseOwners" Association="Self.FK_Horses_HorseOwners">
+            <End Role="HorseOwners" EntitySet="HorseOwners" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_Trainers" Association="Self.FK_Horses_Trainers">
+            <End Role="Trainers" EntitySet="Trainers" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RacecourseDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ContestParticipant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contest_Id" Type="Int32" Nullable="false" />
+          <Property Name="Horse_Id" Type="Int32" Nullable="false" />
+          <Property Name="Jockey_Id" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Contests">
           <Key>
             <PropertyRef Name="Id" />
@@ -98,8 +188,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HorsesBreed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HorseAge" Type="Int32" Nullable="false" />
-          <Property Name="PrizePool" Type="Int64" Nullable="false" />
+          <Property Name="HorseAge" Type="Int32" />
+          <Property Name="PrizePool" Type="Int64" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="HorseFactories">
@@ -111,6 +201,7 @@
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HorseAmount" Type="Int32" Nullable="false" />
           <Property Name="AdditionalInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Horses" Relationship="Self.FK_Horses_HorseFactories" FromRole="HorseFactories" ToRole="Horses" />
         </EntityType>
         <EntityType Name="HorseOwners">
           <Key>
@@ -123,6 +214,26 @@
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Sex" Type="Int32" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Horses" Relationship="Self.FK_Horses_HorseOwners" FromRole="HorseOwners" ToRole="Horses" />
+        </EntityType>
+        <EntityType Name="Horses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HorseFactory_Id" Type="Int32" />
+          <Property Name="Trainer_Id" Type="Int32" />
+          <Property Name="Owner_Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Breed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HorseFactories" Relationship="Self.FK_Horses_HorseFactories" FromRole="Horses" ToRole="HorseFactories" />
+          <NavigationProperty Name="HorseOwners" Relationship="Self.FK_Horses_HorseOwners" FromRole="Horses" ToRole="HorseOwners" />
+          <NavigationProperty Name="Trainers" Relationship="Self.FK_Horses_Trainers" FromRole="Horses" ToRole="Trainers" />
         </EntityType>
         <EntityType Name="Jockeys">
           <Key>
@@ -135,8 +246,8 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Int32" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Racecourses">
@@ -146,7 +257,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HorseAmount" Type="Int32" Nullable="false" />
+          <Property Name="HorseAmount" Type="Int32" />
           <Property Name="AdditionalInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Trainers">
@@ -160,17 +271,74 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Int32" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Horses" Relationship="Self.FK_Horses_Trainers" FromRole="Trainers" ToRole="Horses" />
         </EntityType>
+        <Association Name="FK_Horses_HorseFactories">
+          <End Role="HorseFactories" Type="Self.HorseFactories" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorseFactories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="HorseFactory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_HorseOwners">
+          <End Role="HorseOwners" Type="Self.HorseOwners" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HorseOwners">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="Owner_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_Trainers">
+          <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="Trainer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RacecourseDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContestParticipant" EntityType="Self.ContestParticipant" />
           <EntitySet Name="Contests" EntityType="Self.Contests" />
           <EntitySet Name="HorseFactories" EntityType="Self.HorseFactories" />
           <EntitySet Name="HorseOwners" EntityType="Self.HorseOwners" />
+          <EntitySet Name="Horses" EntityType="Self.Horses" />
           <EntitySet Name="Jockeys" EntityType="Self.Jockeys" />
           <EntitySet Name="Racecourses" EntityType="Self.Racecourses" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" />
+          <AssociationSet Name="FK_Horses_HorseFactories" Association="Self.FK_Horses_HorseFactories">
+            <End Role="HorseFactories" EntitySet="HorseFactories" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_HorseOwners" Association="Self.FK_Horses_HorseOwners">
+            <End Role="HorseOwners" EntitySet="HorseOwners" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_Trainers" Association="Self.FK_Horses_Trainers">
+            <End Role="Trainers" EntitySet="Trainers" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -178,6 +346,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RacecourseDBModelStoreContainer" CdmEntityContainer="RacecourseDBEntities">
+          <EntitySetMapping Name="ContestParticipant">
+            <EntityTypeMapping TypeName="RacecourseDBModel.ContestParticipant">
+              <MappingFragment StoreEntitySet="ContestParticipant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Contest_Id" ColumnName="Contest_Id" />
+                <ScalarProperty Name="Horse_Id" ColumnName="Horse_Id" />
+                <ScalarProperty Name="Jockey_Id" ColumnName="Jockey_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Contests">
             <EntityTypeMapping TypeName="RacecourseDBModel.Contests">
               <MappingFragment StoreEntitySet="Contests">
@@ -211,6 +389,23 @@
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horses">
+            <EntityTypeMapping TypeName="RacecourseDBModel.Horses">
+              <MappingFragment StoreEntitySet="Horses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HorseFactory_Id" ColumnName="HorseFactory_Id" />
+                <ScalarProperty Name="Trainer_Id" ColumnName="Trainer_Id" />
+                <ScalarProperty Name="Owner_Id" ColumnName="Owner_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Breed" ColumnName="Breed" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,10 +14,19 @@ namespace RacecourseSystem.Database
     
     public partial class HorseFactories
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HorseFactories()
+        {
+            this.Horses = new HashSet<Horses>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
         public int HorseAmount { get; set; }
         public string AdditionalInfo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Horses> Horses { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace RacecourseSystem.Database
     
     public partial class Trainers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Trainers()
+        {
+            this.Horses = new HashSet<Horses>();
+        }
+    
         public int Id { get; set; }
         public string License { get; set; }
         public string Rank { get; set; }
@@ -21,8 +27,11 @@ namespace RacecourseSystem.Database
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
-        public int Sex { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public Nullable<int> Sex { get; set; }
         public string Country { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Horses> Horses { get; set; }
     }
 }

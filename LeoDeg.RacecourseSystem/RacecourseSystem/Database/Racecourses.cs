@@ -17,7 +17,7 @@ namespace RacecourseSystem.Database
         public int Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
-        public int HorseAmount { get; set; }
+        public Nullable<int> HorseAmount { get; set; }
         public string AdditionalInfo { get; set; }
     }
 }

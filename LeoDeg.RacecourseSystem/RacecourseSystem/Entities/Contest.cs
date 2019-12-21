@@ -17,7 +17,6 @@ namespace RacecourseSystem
 		public string Title { get; set; }
 		[StringLength (50)]
 		public string HorsesBreed { get; set; }
-		public int HorseAge { get; set; }
 		public long PrizePool { get; set; }
 		[Required]
 		public DateTime DateTime { get; set; }

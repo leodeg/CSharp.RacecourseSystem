@@ -12,17 +12,11 @@ namespace RacecourseSystem.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Jockeys
+    public partial class ContestParticipant
     {
         public int Id { get; set; }
-        public string License { get; set; }
-        public string Rank { get; set; }
-        public string AdditionalInfo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string MiddleName { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
-        public Nullable<int> Sex { get; set; }
-        public string Country { get; set; }
+        public int Contest_Id { get; set; }
+        public int Horse_Id { get; set; }
+        public int Jockey_Id { get; set; }
     }
 }

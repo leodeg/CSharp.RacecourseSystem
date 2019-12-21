@@ -17,8 +17,8 @@ namespace RacecourseSystem.Database
         public int Id { get; set; }
         public string Title { get; set; }
         public string HorsesBreed { get; set; }
-        public int HorseAge { get; set; }
-        public long PrizePool { get; set; }
+        public Nullable<int> HorseAge { get; set; }
+        public Nullable<long> PrizePool { get; set; }
         public System.DateTime DateTime { get; set; }
     }
 }

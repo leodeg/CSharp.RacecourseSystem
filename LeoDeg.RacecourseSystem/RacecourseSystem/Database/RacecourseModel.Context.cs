@@ -25,9 +25,11 @@ namespace RacecourseSystem.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ContestParticipant> ContestParticipant { get; set; }
         public virtual DbSet<Contests> Contests { get; set; }
         public virtual DbSet<HorseFactories> HorseFactories { get; set; }
         public virtual DbSet<HorseOwners> HorseOwners { get; set; }
+        public virtual DbSet<Horses> Horses { get; set; }
         public virtual DbSet<Jockeys> Jockeys { get; set; }
         public virtual DbSet<Racecourses> Racecourses { get; set; }
         public virtual DbSet<Trainers> Trainers { get; set; }

@@ -14,6 +14,12 @@ namespace RacecourseSystem.Database
     
     public partial class HorseOwners
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HorseOwners()
+        {
+            this.Horses = new HashSet<Horses>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,5 +27,8 @@ namespace RacecourseSystem.Database
         public System.DateTime DateOfBirth { get; set; }
         public int Sex { get; set; }
         public string Country { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Horses> Horses { get; set; }
     }
 }

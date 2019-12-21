@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\ContestParticipant.cs">
+      <DependentUpon>RacecourseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Contests.cs">
       <DependentUpon>RacecourseModel.tt</DependentUpon>
     </Compile>
@@ -66,6 +69,9 @@
       <DependentUpon>RacecourseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\HorseOwners.cs">
+      <DependentUpon>RacecourseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Horses.cs">
       <DependentUpon>RacecourseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Jockeys.cs">
@@ -92,18 +98,18 @@
     <Compile Include="Database\Trainers.cs">
       <DependentUpon>RacecourseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Library\Company.cs" />
-    <Compile Include="Library\Contest.cs" />
-    <Compile Include="Library\ContestParticipant.cs" />
-    <Compile Include="Library\Horse.cs" />
-    <Compile Include="Library\HorseFactory.cs" />
-    <Compile Include="Library\HorseOwner.cs" />
-    <Compile Include="Library\ID.cs" />
-    <Compile Include="Library\Jockey.cs" />
-    <Compile Include="Library\Participant.cs" />
-    <Compile Include="Library\Person.cs" />
-    <Compile Include="Library\Racecourse.cs" />
-    <Compile Include="Library\Trainer.cs" />
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\Contest.cs" />
+    <Compile Include="Entities\ContestParticipant.cs" />
+    <Compile Include="Entities\Horse.cs" />
+    <Compile Include="Entities\HorseFactory.cs" />
+    <Compile Include="Entities\HorseOwner.cs" />
+    <Compile Include="Entities\ID.cs" />
+    <Compile Include="Entities\Jockey.cs" />
+    <Compile Include="Entities\Participant.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Racecourse.cs" />
+    <Compile Include="Entities\Trainer.cs" />
     <Compile Include="RacecourseLibrary.cs" />
     <Compile Include="RacecourseManagementSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
