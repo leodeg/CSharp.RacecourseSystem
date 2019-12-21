@@ -14,22 +14,30 @@ namespace RacecourseSystem
 	/// </summary>
 	public class RacecourseLibrary : IDisposable
 	{
-		public enum RemoveType { Company, Trainer, Jockey, Horse, HorseOwner, Contest }
-		public enum ParticipantType { Trainer, Jockey }
-
-		public DatabaseEntityCollection<Company> Companies { get; }
 		public DatabaseEntityCollection<Contest> Contests { get; }
+		public DatabaseEntityCollection<ContestParticipant> ContestParticipants { get; }
+
 		public DatabaseEntityCollection<Horse> Horses { get; }
 		public DatabaseEntityCollection<HorseOwner> HorseOwners { get; }
-		public DatabaseEntityCollection<Participant> Participants { get; }
+		public DatabaseEntityCollection<Racecourse> Racecourses { get; }
+		public DatabaseEntityCollection<HorseFactory> HorseFactories { get; }
+
+		public DatabaseEntityCollection<Jockey> Jockeys { get; }
+		public DatabaseEntityCollection<Trainer> Trainers { get; }
+
 
 		public RacecourseLibrary ()
 		{
-			Companies = new DatabaseEntityCollection<Company> ();
 			Contests = new DatabaseEntityCollection<Contest> ();
+			ContestParticipants = new DatabaseEntityCollection<ContestParticipant> ();
+
 			Horses = new DatabaseEntityCollection<Horse> ();
 			HorseOwners = new DatabaseEntityCollection<HorseOwner> ();
-			Participants = new DatabaseEntityCollection<Participant> ();
+			Racecourses = new DatabaseEntityCollection<Racecourse> ();
+			HorseFactories = new DatabaseEntityCollection<HorseFactory> ();
+
+			Jockeys = new DatabaseEntityCollection<Jockey> ();
+			Trainers = new DatabaseEntityCollection<Trainer> ();
 		}
 
 		/// <summary>
@@ -37,11 +45,16 @@ namespace RacecourseSystem
 		/// </summary>
 		public void Dispose ()
 		{
-			Companies.Dispose ();
 			Contests.Dispose ();
+			ContestParticipants.Dispose ();
+
 			Horses.Dispose ();
 			HorseOwners.Dispose ();
-			Participants.Dispose ();
+			Racecourses.Dispose ();
+			HorseFactories.Dispose ();
+
+			Jockeys.Dispose ();
+			Trainers.Dispose ();
 		}
 	}
 }

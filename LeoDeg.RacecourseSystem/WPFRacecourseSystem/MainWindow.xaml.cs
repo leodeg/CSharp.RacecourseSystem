@@ -28,17 +28,40 @@ namespace WPFRacecourseSystem
 		public MainWindow ()
 		{
 			InitializeComponent ();
-
 			managementSystem = new RacecourseManagementSystem ();
-			managementSystem.Library.Companies.Initialize ();
+
+			Horse horse = new Horse ()
+			{
+				Name = "Name",
+				Breed = "Breed",
+				Color = "Color",
+				DateOfBirth = DateTime.Now,
+				Sex = Sex.None,
+				Country = "Country",
+				AdditionalInfo = "Empty"
+			};
+
+			managementSystem.Library.Horses.Add (horse);
+			managementSystem.Library.Horses.SaveChanges ();
+
+
+			HorsesGrid.ItemsSource = managementSystem.Library.Horses.ToBindingList ();
 		}
 
 		private void TabControl_SelectionChanged (object sender, SelectionChangedEventArgs e)
 		{
-			if (CompaniesTab.IsSelected)
+			if (HorseFactoryTab.IsSelected)
 			{
-				managementSystem.Library.Companies.Load ();
-				CompaniesGrid.ItemsSource = managementSystem.Library.Companies.ToBindingList ();
+				//HorseFactory horseFactory = new HorseFactory ()
+				//{
+				//	Name = "Name",
+				//	Country = "Country",
+				//	HorseAmount = 10,
+				//	AdditionalInfo = "Empty"
+				//};
+
+				//managementSystem.Library.HorseFactories.Add (horseFactory);
+				HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.ToBindingList ();
 			}
 		}
 	}

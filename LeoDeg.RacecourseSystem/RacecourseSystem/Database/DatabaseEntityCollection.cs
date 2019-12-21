@@ -16,11 +16,11 @@ namespace RacecourseSystem
 	/// <typeparam name="TEntity">class for base context that is DbContext wrapper</typeparam>
 	public class DatabaseEntityCollection<TEntity> : IDisposable where TEntity : class
 	{
-		private BaseContext<TEntity> Context { get; set; }
+		private DatabaseContext<TEntity> Context { get; set; }
 
-		public void Initialize ()
+		public DatabaseEntityCollection ()
 		{
-			Context = new BaseContext<TEntity> ();
+			Context = new DatabaseContext<TEntity> ();
 		}
 
 		public void Dispose ()
@@ -50,7 +50,7 @@ namespace RacecourseSystem
 		/// <param name="entity"></param>
 		public void Add (TEntity entity)
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				db.DbSet.Add (entity);
 				db.SaveChanges ();
@@ -60,10 +60,9 @@ namespace RacecourseSystem
 		/// <summary>
 		/// Return IEnumerabe with entities.
 		/// </summary>
-		/// <returns></returns>
 		public IEnumerable<TEntity> GetIEnumerable ()
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				return db.DbSet;
 			}
@@ -71,7 +70,7 @@ namespace RacecourseSystem
 
 		public BindingList<TEntity> GetBindingList ()
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				return db.DbSet.Local.ToBindingList ();
 			}
@@ -80,10 +79,9 @@ namespace RacecourseSystem
 		/// <summary>
 		/// Return count of entities in the database.
 		/// </summary>
-		/// <returns></returns>
 		public int GetCount ()
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				return db.DbSet.Count ();
 			}
@@ -95,7 +93,7 @@ namespace RacecourseSystem
 		/// <param name="entity"></param>
 		public void Remove (TEntity entity)
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				db.DbSet.Remove (entity);
 				db.SaveChanges ();
@@ -110,7 +108,7 @@ namespace RacecourseSystem
 		/// <exception cref="ArgumentException" />
 		public void Update (TEntity entity, int entityId)
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				var item = db.DbSet.Find (entityId);
 				if (item == null) throw new ArgumentException (string.Format ("Cannot find entity with id: {0}", entityId));
@@ -118,12 +116,19 @@ namespace RacecourseSystem
 			}
 		}
 
+		public void SaveChanges ()
+		{
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
+			{
+				db.SaveChanges ();
+			}
+		}
+
 		public void Clear ()
 		{
-			using (BaseContext<TEntity> db = new BaseContext<TEntity> ())
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				db.DbSet.Clear ();
-				db.SaveChanges ();
 			}
 		}
 	}
