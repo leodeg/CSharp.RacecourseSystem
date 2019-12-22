@@ -29,6 +29,9 @@ namespace WPFRacecourseSystem
 		ContestWindow contestWindow;
 		HorseFactoryWindow horseFactoryWindow;
 		RacecourseWindow racecourseWindow;
+		HorseOwnerWindow horseOwnerWindow;
+		JockeyWindow jockeyWindow;
+		TrainerWindow trainerWindow;
 
 		public MainWindow ()
 		{
@@ -39,17 +42,7 @@ namespace WPFRacecourseSystem
 
 		private void Initialize ()
 		{
-			contestWindow = new ContestWindow ();
-			contestWindow.OnAdd += managementSystem.Library.Contests.Add;
-			contestWindow.OnUpdate += managementSystem.Library.Contests.Update;
 
-			horseFactoryWindow = new HorseFactoryWindow ();
-			horseFactoryWindow.OnAdd += managementSystem.Library.HorseFactories.Add;
-			horseFactoryWindow.OnUpdate += managementSystem.Library.HorseFactories.Update;
-
-			racecourseWindow = new RacecourseWindow ();
-			racecourseWindow.OnAdd += managementSystem.Library.Racecourses.Add;
-			racecourseWindow.OnUpdate += managementSystem.Library.Racecourses.Update;
 		}
 
 		private void TabControl_SelectionChanged (object sender, SelectionChangedEventArgs e)
@@ -103,20 +96,56 @@ namespace WPFRacecourseSystem
 
 		#endregion
 
+		#region New Info
 
 		private void NewInfo_Contest_Click (object sender, RoutedEventArgs e)
 		{
-			contestWindow.ShowDialog ();
+			contestWindow = new ContestWindow ();
+			contestWindow.OnAdd += managementSystem.Library.Contests.Add;
+			contestWindow.OnUpdate += managementSystem.Library.Contests.Update;
+			contestWindow.Show ();
 		}
 
 		private void NewInfo_HorseFactory_Click (object sender, RoutedEventArgs e)
 		{
-			horseFactoryWindow.ShowDialog ();
+			horseFactoryWindow = new HorseFactoryWindow ();
+			horseFactoryWindow.OnAdd += managementSystem.Library.HorseFactories.Add;
+			horseFactoryWindow.OnUpdate += managementSystem.Library.HorseFactories.Update;
+			horseFactoryWindow.Show ();
 		}
 
 		private void NewInfo_Racecourse_Click (object sender, RoutedEventArgs e)
 		{
-			racecourseWindow.ShowDialog ();
+			racecourseWindow = new RacecourseWindow ();
+			racecourseWindow.OnAdd += managementSystem.Library.Racecourses.Add;
+			racecourseWindow.OnUpdate += managementSystem.Library.Racecourses.Update;
+			racecourseWindow.Show ();
 		}
+
+		private void NewInfo_HorseOwner_Click (object sender, RoutedEventArgs e)
+		{
+			horseOwnerWindow = new HorseOwnerWindow ();
+			horseOwnerWindow.OnAdd += managementSystem.Library.HorseOwners.Add;
+			horseOwnerWindow.OnUpdate += managementSystem.Library.HorseOwners.Update;
+			horseOwnerWindow.Show ();
+		}
+
+		private void NewInfo_Jockey_Click (object sender, RoutedEventArgs e)
+		{
+			jockeyWindow = new JockeyWindow ();
+			jockeyWindow.OnAdd += managementSystem.Library.Jockeys.Add;
+			jockeyWindow.OnUpdate += managementSystem.Library.Jockeys.Update;
+			jockeyWindow.Show ();
+		}
+
+		private void NewInfo_Trainer_Click (object sender, RoutedEventArgs e)
+		{
+			trainerWindow = new TrainerWindow ();
+			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;
+			trainerWindow.OnUpdate += managementSystem.Library.Trainers.Update;
+			trainerWindow.Show ();
+		}
+
+		#endregion
 	}
 }

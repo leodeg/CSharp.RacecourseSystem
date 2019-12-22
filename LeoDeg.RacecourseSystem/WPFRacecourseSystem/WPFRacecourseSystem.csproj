@@ -65,6 +65,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HorseOwnerWindow.xaml.cs">
+      <DependentUpon>HorseOwnerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TrainerWindow.xaml.cs">
+      <DependentUpon>TrainerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JockeyWindow.xaml.cs">
+      <DependentUpon>JockeyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RacecourseWindow.xaml.cs">
       <DependentUpon>RacecourseWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +82,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HorseFactoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HorseOwnerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TrainerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="JockeyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

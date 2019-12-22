@@ -20,9 +20,9 @@
 					<Button x:Name="NewInfo_HorseFactory" Content="HorseFactory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0" Click="NewInfo_HorseFactory_Click"/>
 					<Button x:Name="NewInfo_Racecourse" Content="Racecourse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0" Click="NewInfo_Racecourse_Click"/>
 					<Button x:Name="NewInfo_Horse" Content="Horse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0"/>
-					<Button x:Name="NewInfo_HorseOwner" Content="Horse Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0"/>
-					<Button x:Name="NewInfo_Jockey" Content="Jockey" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0"/>
-					<Button x:Name="NewInfo_Trainer" Content="Trainer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0"/>
+					<Button x:Name="NewInfo_HorseOwner" Content="Horse Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0" Click="NewInfo_HorseOwner_Click"/>
+					<Button x:Name="NewInfo_Jockey" Content="Jockey" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0" Click="NewInfo_Jockey_Click"/>
+					<Button x:Name="NewInfo_Trainer" Content="Trainer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="25" Margin="5,0" Click="NewInfo_Trainer_Click"/>
 				</StackPanel>
 			</TabItem>
 		</TabControl>
@@ -149,7 +149,6 @@
 								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
-								<DataGridTextColumn Binding="{Binding HorseCount}" Header="HorseCount" Width="*"/>
 							</DataGrid.Columns>
 						</DataGrid>
 					</Grid>
@@ -171,7 +170,6 @@
 								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
-								<DataGridTextColumn Binding="{Binding ParticipantType}" Header="Type" Width="*"/>
 								<DataGridTextColumn Binding="{Binding License}" Header="License" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Rank}" Header="Rank" Width="*"/>
 								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="AdditionalInfo" Width="*"/>
@@ -196,7 +194,6 @@
 								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
-								<DataGridTextColumn Binding="{Binding ParticipantType}" Header="Type" Width="*"/>
 								<DataGridTextColumn Binding="{Binding License}" Header="License" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Rank}" Header="Rank" Width="*"/>
 								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="AdditionalInfo" Width="*"/>
