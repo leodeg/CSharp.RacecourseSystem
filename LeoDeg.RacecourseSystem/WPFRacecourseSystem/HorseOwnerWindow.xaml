@@ -1,0 +1,33 @@
+﻿<Window x:Class="WPFRacecourseSystem.HorseOwnerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFRacecourseSystem"
+        mc:Ignorable="d"
+        Title="HorseOwnerWindow" Height="462.578" Width="400" MaxHeight="500" MaxWidth="400" MinWidth="400" MinHeight="500">
+    <Grid>
+		<StackPanel Orientation="Vertical" Margin="10 10">
+			<Label  Content="First Name"/>
+			<TextBox x:Name="textBoxFirstName" Width="auto" Height="26"/>
+
+			<Label  Content="Last Name"/>
+			<TextBox x:Name="textBoxLastName" Width="auto" Height="26"/>
+
+			<Label  Content="Middle Name"/>
+			<TextBox x:Name="textBoxMiddleName" Width="auto" Height="26"/>
+
+			<Label  Content="Date of Birth"/>
+			<DatePicker x:Name="datePickerDateOfBirth" Width="auto" Height="26"/>
+
+			<Label  Content="Sex"/>
+			<ComboBox x:Name="comboBoxSex" Height="26" />
+
+			<Label  Content="Country"/>
+			<TextBox x:Name="textBoxCountry" Width="auto" Height="26"/>
+
+			<Button Content="New" Name="buttonNew" Margin="0 10" Height="40" Click="buttonNew_Click"/>
+			<Button Content="Update" Name="buttonUpdate" Margin="0 5" Height="40" Click="buttonUpdate_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>
