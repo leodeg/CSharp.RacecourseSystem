@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,20 +30,16 @@ namespace WPFRacecourseSystem
 		ContestWindow contestWindow;
 		HorseFactoryWindow horseFactoryWindow;
 		RacecourseWindow racecourseWindow;
+		HorseWindow horseWindow;
 		HorseOwnerWindow horseOwnerWindow;
 		JockeyWindow jockeyWindow;
 		TrainerWindow trainerWindow;
+
 
 		public MainWindow ()
 		{
 			InitializeComponent ();
 			managementSystem = new RacecourseManagementSystem ();
-			Initialize ();
-		}
-
-		private void Initialize ()
-		{
-
 		}
 
 		private void TabControl_SelectionChanged (object sender, SelectionChangedEventArgs e)
@@ -120,6 +117,17 @@ namespace WPFRacecourseSystem
 			racecourseWindow.OnAdd += managementSystem.Library.Racecourses.Add;
 			racecourseWindow.OnUpdate += managementSystem.Library.Racecourses.Update;
 			racecourseWindow.Show ();
+		}
+
+		private void NewInfo_Horse_Click (object sender, RoutedEventArgs e)
+		{
+			horseWindow = new HorseWindow ();
+			horseWindow.OnAdd += managementSystem.Library.Horses.Add;
+			horseWindow.OnUpdate += managementSystem.Library.Horses.Update;
+
+			horseWindow.managementSystem = managementSystem;
+
+			horseWindow.Show ();
 		}
 
 		private void NewInfo_HorseOwner_Click (object sender, RoutedEventArgs e)

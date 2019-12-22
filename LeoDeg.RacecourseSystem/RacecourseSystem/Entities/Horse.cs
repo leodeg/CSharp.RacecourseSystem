@@ -16,8 +16,8 @@ namespace RacecourseSystem
 		[Key]
 		public int Id { get; set; }
 
-		public Company HorseFactory { get; set; }
-		public Participant Trainer { get; set; }
+		public HorseFactory HorseFactory { get; set; }
+		public Trainer Trainer { get; set; }
 		public HorseOwner Owner { get; set; }
 
 		[Required, StringLength (100)]

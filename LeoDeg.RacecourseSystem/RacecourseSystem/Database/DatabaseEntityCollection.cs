@@ -58,6 +58,18 @@ namespace RacecourseSystem
 		}
 
 		/// <summary>
+		/// Get entity to the database.
+		/// </summary>
+		/// <param name="id">id of the entity</param>
+		public TEntity Get (int id)
+		{
+			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
+			{
+				return db.DbSet.Find (id);
+			}
+		}
+
+		/// <summary>
 		/// Return IEnumerabe with entities.
 		/// </summary>
 		public IEnumerable<TEntity> GetIEnumerable ()
