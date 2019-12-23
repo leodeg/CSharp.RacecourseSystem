@@ -11,6 +11,11 @@ namespace RacecourseSystem
 	[Table (name: "Horses")]
 	public class Horse : ID
 	{
+		public Horse ()
+		{
+
+		}
+
 		[DatabaseGenerated (DatabaseGeneratedOption.Identity)]
 		[Required]
 		[Key]

@@ -104,7 +104,7 @@ namespace WPFRacecourseSystem
 		{
 			HorseFactory horseFactory = HorseFactoryGrid.SelectedItem as HorseFactory;
 			if (horseFactory != null)
-				return managementSystem.Library.HorseFactories.Get(horseFactory.Id);
+				return managementSystem.Library.HorseFactories.Get<HorseFactory> (horseFactory.Id);
 			return null;
 		}
 
@@ -112,7 +112,7 @@ namespace WPFRacecourseSystem
 		{
 			HorseOwner horseOwner = HorseOwnerGrid.SelectedItem as HorseOwner;
 			if (horseOwner != null)
-				return managementSystem.Library.HorseOwners.Get (horseOwner.Id);
+				return managementSystem.Library.HorseOwners.Get<HorseOwner> (horseOwner.Id);
 			return null;
 		}
 
@@ -120,7 +120,7 @@ namespace WPFRacecourseSystem
 		{
 			Trainer trainer = TrainerGrid.SelectedItem as Trainer;
 			if (trainer != null)
-				return managementSystem.Library.Trainers.Get (trainer.Id);
+				return managementSystem.Library.Trainers.Get<Trainer> (trainer.Id);
 			return null;
 		}
 
@@ -155,7 +155,9 @@ namespace WPFRacecourseSystem
 		{
 			if (oldHorse != null && CheckInformationFields ())
 			{
-				OnUpdate?.Invoke (GetHorse (), oldHorse.Id);
+				Horse horse = GetHorse ();
+				horse.Id = oldHorse.Id;
+				OnUpdate?.Invoke (horse, oldHorse.Id);
 				MessageBox.Show ("Contest was successfully updated in the database.");
 			}
 		}

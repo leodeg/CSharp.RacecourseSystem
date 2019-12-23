@@ -124,9 +124,9 @@
 								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
 								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="0.3*"/>
 								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
-								<DataGridTextColumn Binding="{Binding HorseFactory}" Header="Horse Factory Id" Width="*"/>
-								<DataGridTextColumn Binding="{Binding Trainer}" Header="Trainer Id" Width="*"/>
-								<DataGridTextColumn Binding="{Binding Owner}" Header="Owner Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding HorseFactory.Id}" Header="Horse Factory Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Trainer.Id}" Header="Trainer Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Owner.Id}" Header="Owner Id" Width="*"/>
 								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="Additional Info" Width="*"/>
 							</DataGrid.Columns>
 						</DataGrid>

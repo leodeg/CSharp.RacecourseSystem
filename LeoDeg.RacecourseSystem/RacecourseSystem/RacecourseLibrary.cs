@@ -17,7 +17,7 @@ namespace RacecourseSystem
 		public DatabaseEntityCollection<Contest> Contests { get; }
 		public DatabaseEntityCollection<ContestParticipant> ContestParticipants { get; }
 
-		public DatabaseEntityCollection<Horse> Horses { get; }
+		public HorseCollection Horses { get; }
 		public DatabaseEntityCollection<HorseOwner> HorseOwners { get; }
 		public DatabaseEntityCollection<Racecourse> Racecourses { get; }
 		public DatabaseEntityCollection<HorseFactory> HorseFactories { get; }
@@ -31,7 +31,7 @@ namespace RacecourseSystem
 			Contests = new DatabaseEntityCollection<Contest> ();
 			ContestParticipants = new DatabaseEntityCollection<ContestParticipant> ();
 
-			Horses = new DatabaseEntityCollection<Horse> ();
+			Horses = new HorseCollection ();
 			HorseOwners = new DatabaseEntityCollection<HorseOwner> ();
 			Racecourses = new DatabaseEntityCollection<Racecourse> ();
 			HorseFactories = new DatabaseEntityCollection<HorseFactory> ();

@@ -134,7 +134,9 @@ namespace WPFRacecourseSystem
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetTrainer (), oldTrainer.Id);
+					Trainer trainer = GetTrainer ();
+					trainer.Id = oldTrainer.Id;
+					OnUpdate?.Invoke (trainer, oldTrainer.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
 				}
 			}

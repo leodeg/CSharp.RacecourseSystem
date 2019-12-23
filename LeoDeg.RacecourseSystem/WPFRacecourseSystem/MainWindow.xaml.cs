@@ -43,6 +43,7 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Racecourses.IsEmpty)
 				MessageBox.Show ("Racecourses information is empty.");
 			managementSystem.Library.Racecourses.Load ();
+			RacecourseGrid.Items.Clear ();
 			RacecourseGrid.ItemsSource = managementSystem.Library.Racecourses.ToBindingList ();
 		}
 
@@ -51,7 +52,9 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Contests.IsEmpty)
 				MessageBox.Show ("Contests information is empty.");
 			managementSystem.Library.Contests.Load ();
+
 			ContestsGrid.ItemsSource = managementSystem.Library.Contests.ToBindingList ();
+			ContestsGrid.Items.Refresh ();
 		}
 
 		private void Button_HorseFactories_Refresh_Click (object sender, RoutedEventArgs e)
@@ -59,6 +62,7 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.HorseFactories.IsEmpty)
 				MessageBox.Show ("Horse Factories information is empty.");
 			managementSystem.Library.HorseFactories.Load ();
+			HorseFactoryGrid.Items.Clear ();
 			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.ToBindingList ();
 		}
 
@@ -67,7 +71,8 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Horses.IsEmpty)
 				MessageBox.Show ("Horses information is empty.");
 			managementSystem.Library.Horses.Load ();
-			HorsesGrid.ItemsSource = managementSystem.Library.Horses.ToBindingList ();
+			HorsesGrid.Items.Clear ();
+			HorsesGrid.ItemsSource = managementSystem.Library.Horses.GetArray ();
 		}
 
 		private void Button_HorseOwners_Refresh_Click (object sender, RoutedEventArgs e)
@@ -75,6 +80,7 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.HorseOwners.IsEmpty)
 				MessageBox.Show ("Horse Owners information is empty.");
 			managementSystem.Library.HorseOwners.Load ();
+			HorseOwnerGrid.Items.Clear ();
 			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.ToBindingList ();
 		}
 
@@ -83,6 +89,7 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Jockeys.IsEmpty)
 				MessageBox.Show ("Jockeys information is empty.");
 			managementSystem.Library.Jockeys.Load ();
+			JockeyGrid.Items.Clear ();
 			JockeyGrid.ItemsSource = managementSystem.Library.Jockeys.ToBindingList ();
 		}
 
@@ -91,6 +98,7 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Trainers.IsEmpty)
 				MessageBox.Show ("Trainers information is empty.");
 			managementSystem.Library.Trainers.Load ();
+			TrainerGrid.Items.Clear ();
 			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.ToBindingList ();
 		}
 

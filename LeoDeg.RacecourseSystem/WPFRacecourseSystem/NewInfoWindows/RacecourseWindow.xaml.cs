@@ -20,7 +20,7 @@ namespace WPFRacecourseSystem
 	/// </summary>
 	public partial class RacecourseWindow : Window
 	{
-		private Racecourse oldHorseFactory;
+		private Racecourse oldRacecourse;
 
 		public Action<Racecourse> OnAdd;
 		public Action<Racecourse, int> OnUpdate;
@@ -34,19 +34,19 @@ namespace WPFRacecourseSystem
 		public RacecourseWindow (Racecourse horseFactoryToChange)
 		{
 			InitializeComponent ();
-			oldHorseFactory = horseFactoryToChange;
+			oldRacecourse = horseFactoryToChange;
 			ShowOldContestInformation ();
 		}
 
 		private void ShowOldContestInformation ()
 		{
-			textBoxName.Text = oldHorseFactory.Name;
-			textBoxCountry.Text = oldHorseFactory.Country;
-			textBoxHorseAmount.Text = oldHorseFactory.HorseAmount.ToString ();
-			textBoxAdditionalInfo.Text = oldHorseFactory.AdditionalInfo;
+			textBoxName.Text = oldRacecourse.Name;
+			textBoxCountry.Text = oldRacecourse.Country;
+			textBoxHorseAmount.Text = oldRacecourse.HorseAmount.ToString ();
+			textBoxAdditionalInfo.Text = oldRacecourse.AdditionalInfo;
 		}
 
-		private Racecourse GetHorseFactory ()
+		private Racecourse GetRacecourse ()
 		{
 			try
 			{
@@ -110,7 +110,7 @@ namespace WPFRacecourseSystem
 		{
 			if (CheckInformationFields ())
 			{
-				OnAdd?.Invoke (GetHorseFactory ());
+				OnAdd?.Invoke (GetRacecourse ());
 				MessageBox.Show ("Contest was successfully added to the database.");
 				this.Close ();
 			}
@@ -118,11 +118,13 @@ namespace WPFRacecourseSystem
 
 		private void buttonUpdate_Click (object sender, RoutedEventArgs e)
 		{
-			if (oldHorseFactory != null)
+			if (oldRacecourse != null)
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetHorseFactory (), oldHorseFactory.Id);
+					Racecourse racecourse = GetRacecourse ();
+					racecourse.Id = oldRacecourse.Id;
+					OnUpdate?.Invoke (racecourse, oldRacecourse.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
 				}
 			}
