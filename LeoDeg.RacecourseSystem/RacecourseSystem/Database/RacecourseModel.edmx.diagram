@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb1821205d114e04984302c63db15014" Name="Diagram1">
+        <EntityTypeShape EntityType="RacecourseDBModel.ContestParticipant" Width="1.5" PointX="7.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.Contests" Width="1.5" PointX="7.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.HorseFactories" Width="1.5" PointX="1" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.HorseOwners" Width="1.5" PointX="5.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.Horses" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.Jockeys" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.Racecourses" Width="1.5" PointX="1" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacecourseDBModel.Trainers" Width="1.5" PointX="5.125" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="RacecourseDBModel.FK_Horses_HorseFactories" ManuallyRouted="false" />
+        <AssociationConnector Association="RacecourseDBModel.FK_Horses_HorseOwners" ManuallyRouted="false" />
+        <AssociationConnector Association="RacecourseDBModel.FK_Horses_Trainers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

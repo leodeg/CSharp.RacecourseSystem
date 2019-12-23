@@ -1,0 +1,215 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFRacecourseSystem"
+        xmlns:RacecourseSystem="clr-namespace:RacecourseSystem;assembly=RacecourseSystem" x:Class="WPFRacecourseSystem.MainWindow"
+        mc:Ignorable="d"
+        Title="Racecourse" Height="705" Width="1121">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80px"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TabControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2">
+			<TabItem Header="New Info" Name="NewInfo">
+				<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+					<Button x:Name="NewInfo_Contest" Content="Contest" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Contest_Click"/>
+					<Button x:Name="NewInfo_HorseFactory" Content="Horse Factory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_HorseFactory_Click"/>
+					<Button x:Name="NewInfo_Racecourse" Content="Racecourse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Racecourse_Click"/>
+					<Button x:Name="NewInfo_Horse" Content="Horse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Horse_Click"/>
+					<Button x:Name="NewInfo_HorseOwner" Content="Horse Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_HorseOwner_Click"/>
+					<Button x:Name="NewInfo_Jockey" Content="Jockey" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Jockey_Click"/>
+					<Button x:Name="NewInfo_Trainer" Content="Trainer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Trainer_Click"/>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+
+		<TabControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2">
+			<TabItem Header="Contests" Name="ContestsTab">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" 
+						x:Name="ContestsGrid" 
+						HorizontalAlignment="Stretch" 
+						CanUserAddRows="False" 
+						CanUserDeleteRows="False" 
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="ContestsGrid_MouseDoubleClick">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding Title}" Header="Title" Width="*"/>
+								<DataGridTextColumn Binding="{Binding HorseBreed}" Header="Horse Breed" Width="*"/>
+								<DataGridTextColumn Binding="{Binding HorseAge}" Header="Horse Breed" Width="*"/>
+								<DataGridTextColumn Binding="{Binding PrizePool}" Header="Prize Pool" Width="0.60*"/>
+								<DataGridTextColumn Binding="{Binding DateTime}" Header="Date Time" Width="0.50*"/>
+								<DataGridTextColumn Binding="{Binding Jockeys}" Header="Jockeys" Width="0.50*"/>
+								<DataGridTextColumn Binding="{Binding Horses}" Header="Horses" Width="0.50*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="Horse Factories" Name="HorseFactoryTab" HorizontalAlignment="Left" Width="97" MouseDoubleClick="HorseFactoryTab_MouseDoubleClick">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" 
+						x:Name="HorseFactoryGrid" 
+						HorizontalAlignment="Stretch" 
+						CanUserAddRows="False" 
+						CanUserDeleteRows="False" 
+						CanUserResizeRows="False" IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.1*"/>
+								<DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="0.3*"/>
+								<DataGridTextColumn Binding="{Binding HorseAmount}" Header="Horse Amount" Width="0.2*"/>
+								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="Additional Info" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="Racecourses" Name="RacecourseTab">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourse_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourses_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" 
+						x:Name="RacecourseGrid" 
+						HorizontalAlignment="Stretch" 
+						CanUserAddRows="False" 
+						CanUserDeleteRows="False" 
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="RacecourseGrid_MouseDoubleClick">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.1*"/>
+								<DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="0.3*"/>
+								<DataGridTextColumn Binding="{Binding HorseAmount}" Header="Horse Amount" Width="0.2*"/>
+								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="Additional Info" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+
+			<TabItem Header="Horses">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" 
+						x:Name="HorsesGrid" 
+						HorizontalAlignment="Stretch" 
+						CanUserAddRows="False" 
+						CanUserDeleteRows="False" 
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="HorsesGrid_MouseDoubleClick">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Breed}" Header="Breed" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Color}" Header="Color" Width="*"/>
+								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="0.3*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
+								<DataGridTextColumn Binding="{Binding HorseFactory.Id}" Header="Horse Factory Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Trainer.Id}" Header="Trainer Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Owner.Id}" Header="Owner Id" Width="*"/>
+								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="Additional Info" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="Horse Owners">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" x:Name="HorseOwnerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="HorseOwnerGrid_MouseDoubleClick">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding LastName}" Header="LastName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding MiddleName}" Header="MiddleName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="Jockeys">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" x:Name="JockeyGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="JockeyGrid_MouseDoubleClick">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding LastName}" Header="LastName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding MiddleName}" Header="MiddleName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
+								<DataGridTextColumn Binding="{Binding License}" Header="License" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Rank}" Header="Rank" Width="*"/>
+								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="AdditionalInfo" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+			<TabItem Header="Trainers">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Clear_Click"/>
+					</StackPanel>
+					<Grid Background="#FFE5E5E5">
+						<DataGrid AutoGenerateColumns="False" x:Name="TrainerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
+								<DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding LastName}" Header="LastName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding MiddleName}" Header="MiddleName" Width="*"/>
+								<DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of Birth" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Sex}" Header="Sex" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Country}" Header="Country" Width="*"/>
+								<DataGridTextColumn Binding="{Binding License}" Header="License" Width="*"/>
+								<DataGridTextColumn Binding="{Binding Rank}" Header="Rank" Width="*"/>
+								<DataGridTextColumn Binding="{Binding AdditionalInfo}" Header="AdditionalInfo" Width="*"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</StackPanel>
+			</TabItem>
+
+		</TabControl>
+	</Grid>
+</Window>

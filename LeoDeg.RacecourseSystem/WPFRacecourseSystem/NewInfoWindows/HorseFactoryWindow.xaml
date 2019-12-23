@@ -1,0 +1,29 @@
+﻿<Window x:Class="WPFRacecourseSystem.HorseFactoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFRacecourseSystem"
+        mc:Ignorable="d"
+        Title="HorseFactoryWindow" Height="420" Width="364" MinWidth="364" MaxWidth="364" MinHeight="420" MaxHeight="420">
+	<Grid>
+		<StackPanel Orientation="Vertical" Margin="10 10">
+			<Label  Content="Name *"/>
+			<TextBox x:Name="textBoxName" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
+
+
+			<Label  Content="Country"/>
+			<TextBox x:Name="textBoxCountry" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
+
+			<Label  Content="Horse Amount"/>
+			<TextBox x:Name="textBoxHorseAmount" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
+
+			<Label  Content="Additional Information"/>
+			<TextBox x:Name="textBoxAdditionalInfo" Width="auto" Height="66" TextWrapping="Wrap" BorderBrush="#FFA0A0A0"/>
+
+
+			<Button Content="New" Name="buttonNew" Margin="0 10" Height="40" Click="buttonNew_Click"/>
+			<Button Content="Update" Name="buttonUpdate" Margin="0 5" Height="40" Click="buttonUpdate_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>

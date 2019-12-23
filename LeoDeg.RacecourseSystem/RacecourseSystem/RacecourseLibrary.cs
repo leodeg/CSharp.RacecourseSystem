@@ -12,24 +12,49 @@ namespace RacecourseSystem
 	/// <summary>
 	/// Library of racecourse information. Provide access to database.
 	/// </summary>
-	public class RacecourseLibrary
+	public class RacecourseLibrary : IDisposable
 	{
-		public enum RemoveType { Company, Trainer, Jockey, Horse, HorseOwner, Contest }
-		public enum ParticipantType { Trainer, Jockey }
+		public DatabaseEntityCollection<Contest> Contests { get; }
+		public DatabaseEntityCollection<ContestParticipant> ContestParticipants { get; }
 
-		public DbContextEntityCollection<Company> Companies { get; set; }
-		public DbContextEntityCollection<Contest> Contests { get; set; }
-		public DbContextEntityCollection<Horse> Horses { get; set; }
-		public DbContextEntityCollection<HorseOwner> HorseOwners { get; set; }
-		public DbContextEntityCollection<Participant> Participants { get; set; }
+		public HorseCollection Horses { get; }
+		public DatabaseEntityCollection<HorseOwner> HorseOwners { get; }
+		public DatabaseEntityCollection<Racecourse> Racecourses { get; }
+		public DatabaseEntityCollection<HorseFactory> HorseFactories { get; }
+
+		public DatabaseEntityCollection<Jockey> Jockeys { get; }
+		public DatabaseEntityCollection<Trainer> Trainers { get; }
+
 
 		public RacecourseLibrary ()
 		{
-			Companies = new DbContextEntityCollection<Company> ();
-			Contests = new DbContextEntityCollection<Contest> ();
-			Horses = new DbContextEntityCollection<Horse> ();
-			HorseOwners = new DbContextEntityCollection<HorseOwner> ();
-			Participants = new DbContextEntityCollection<Participant> ();
+			Contests = new DatabaseEntityCollection<Contest> ();
+			ContestParticipants = new DatabaseEntityCollection<ContestParticipant> ();
+
+			Horses = new HorseCollection ();
+			HorseOwners = new DatabaseEntityCollection<HorseOwner> ();
+			Racecourses = new DatabaseEntityCollection<Racecourse> ();
+			HorseFactories = new DatabaseEntityCollection<HorseFactory> ();
+
+			Jockeys = new DatabaseEntityCollection<Jockey> ();
+			Trainers = new DatabaseEntityCollection<Trainer> ();
+		}
+
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		public void Dispose ()
+		{
+			Contests.Dispose ();
+			ContestParticipants.Dispose ();
+
+			Horses.Dispose ();
+			HorseOwners.Dispose ();
+			Racecourses.Dispose ();
+			HorseFactories.Dispose ();
+
+			Jockeys.Dispose ();
+			Trainers.Dispose ();
 		}
 	}
 }
