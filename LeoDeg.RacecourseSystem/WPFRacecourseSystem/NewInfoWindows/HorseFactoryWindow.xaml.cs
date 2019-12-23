@@ -28,6 +28,7 @@ namespace WPFRacecourseSystem
 		public HorseFactoryWindow ()
 		{
 			InitializeComponent ();
+			buttonUpdate.IsEnabled = false;
 		}
 
 		public HorseFactoryWindow (HorseFactory horseFactoryToChange)

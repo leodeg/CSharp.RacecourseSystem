@@ -1,22 +1,11 @@
 ﻿using RacecourseSystem;
-using RacecourseSystem.Context;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace WPFRacecourseSystem
 {
@@ -159,6 +148,7 @@ namespace WPFRacecourseSystem
 		private void ContestsGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			Contest contest = ContestsGrid.SelectedItem as Contest;
+			if (contest == null) return;
 			contestWindow = new ContestWindow (contest);
 			contestWindow.Title = string.Format ("Contest - Id: {0}, Title: {1}", contest.Id, contest.Title);
 			contestWindow.OnAdd += managementSystem.Library.Contests.Add;
@@ -169,6 +159,7 @@ namespace WPFRacecourseSystem
 		private void HorseFactoryTab_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			HorseFactory horseFactory = HorseFactoryGrid.SelectedItem as HorseFactory;
+			if (horseFactory == null) return;
 			horseFactoryWindow = new HorseFactoryWindow (horseFactory);
 			horseFactoryWindow.Title = string.Format ("Horse Factory - Id: {0}, Name: {1}", horseFactory.Id, horseFactory.Name);
 			horseFactoryWindow.OnAdd += managementSystem.Library.HorseFactories.Add;
@@ -179,6 +170,7 @@ namespace WPFRacecourseSystem
 		private void RacecourseGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			Racecourse racecourse = RacecourseGrid.SelectedItem as Racecourse;
+			if (racecourse == null) return;
 			racecourseWindow = new RacecourseWindow (racecourse);
 			racecourseWindow.Title = string.Format ("Racecourse - Id: {0}, Name: {1}", racecourse.Id, racecourse.Name);
 			racecourseWindow.OnAdd += managementSystem.Library.Racecourses.Add;
@@ -189,6 +181,7 @@ namespace WPFRacecourseSystem
 		private void HorsesGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			Horse horse = HorsesGrid.SelectedItem as Horse;
+			if (horse == null) return;
 			horseWindow = new HorseWindow (horse);
 			horseWindow.Title = string.Format ("Horse - Id: {0}, Name: {1}", horse.Id, horse.Name);
 			horseWindow.OnAdd += managementSystem.Library.Horses.Add;
@@ -200,6 +193,7 @@ namespace WPFRacecourseSystem
 		private void HorseOwnerGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			HorseOwner horseOwner = HorseOwnerGrid.SelectedItem as HorseOwner;
+			if (horseOwner == null) return;
 			horseOwnerWindow = new HorseOwnerWindow (horseOwner);
 			horseOwnerWindow.Title = string.Format ("Horse Owner - Id: {0}, Name: {1}", horseOwner.Id, horseOwner.FirstName + " " + horseOwner.LastName);
 			horseOwnerWindow.OnAdd += managementSystem.Library.HorseOwners.Add;
@@ -210,6 +204,7 @@ namespace WPFRacecourseSystem
 		private void JockeyGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			Jockey jockey = JockeyGrid.SelectedItem as Jockey;
+			if (jockey == null) return;
 			jockeyWindow = new JockeyWindow (jockey);
 			jockeyWindow.Title = string.Format ("Jockey - Id: {0}, Name: {1}", jockey.Id, jockey.FirstName + " " + jockey.LastName);
 			jockeyWindow.OnAdd += managementSystem.Library.Jockeys.Add;
@@ -220,6 +215,7 @@ namespace WPFRacecourseSystem
 		private void TrainerGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
 		{
 			Trainer trainer = TrainerGrid.SelectedItem as Trainer;
+			if (trainer == null) return;
 			trainerWindow = new TrainerWindow (trainer);
 			trainerWindow.Title = string.Format ("Jockey - Id: {0}, Name: {1}", trainer.Id, trainer.FirstName + " " + trainer.LastName);
 			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;

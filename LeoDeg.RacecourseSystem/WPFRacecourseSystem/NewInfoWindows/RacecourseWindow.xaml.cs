@@ -28,6 +28,7 @@ namespace WPFRacecourseSystem
 		public RacecourseWindow ()
 		{
 			InitializeComponent ();
+			buttonUpdate.IsEnabled = false;
 		}
 
 		public RacecourseWindow (Racecourse horseFactoryToChange)

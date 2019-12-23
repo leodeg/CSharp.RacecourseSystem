@@ -34,6 +34,7 @@ namespace WPFRacecourseSystem
 		{
 			InitializeComponent ();
 			AssignComboBoxValues ();
+			buttonUpdate.IsEnabled = false;
 		}
 
 		public HorseWindow (Horse horseToChange)

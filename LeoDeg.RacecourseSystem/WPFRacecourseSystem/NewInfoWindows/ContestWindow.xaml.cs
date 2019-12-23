@@ -29,6 +29,7 @@ namespace WPFRacecourseSystem
 		public ContestWindow ()
 		{
 			InitializeComponent ();
+			buttonUpdate.IsEnabled = false;
 		}
 
 		public ContestWindow (Contest contestToUpdate)
