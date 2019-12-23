@@ -138,6 +138,7 @@ namespace WPFRacecourseSystem
 					trainer.Id = oldTrainer.Id;
 					OnUpdate?.Invoke (trainer, oldTrainer.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

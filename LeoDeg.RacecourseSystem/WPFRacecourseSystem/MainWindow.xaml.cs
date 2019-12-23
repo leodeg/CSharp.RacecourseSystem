@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 namespace WPFRacecourseSystem
 {
 	/// <summary>
@@ -15,15 +14,14 @@ namespace WPFRacecourseSystem
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		RacecourseManagementSystem managementSystem;
-
-		ContestWindow contestWindow;
-		HorseFactoryWindow horseFactoryWindow;
-		RacecourseWindow racecourseWindow;
-		HorseWindow horseWindow;
-		HorseOwnerWindow horseOwnerWindow;
-		JockeyWindow jockeyWindow;
-		TrainerWindow trainerWindow;
+		private RacecourseManagementSystem managementSystem;
+		private ContestWindow contestWindow;
+		private HorseFactoryWindow horseFactoryWindow;
+		private RacecourseWindow racecourseWindow;
+		private HorseWindow horseWindow;
+		private HorseOwnerWindow horseOwnerWindow;
+		private JockeyWindow jockeyWindow;
+		private TrainerWindow trainerWindow;
 
 
 		public MainWindow ()
@@ -62,11 +60,7 @@ namespace WPFRacecourseSystem
 			ContestsGrid.ItemsSource = managementSystem.Library.Contests.GetArray ();
 		}
 
-		private void Button_Contests_Clear_Click (object sender, RoutedEventArgs e)
-		{
-			ContestsGrid.ItemsSource = null;
-			ContestsGrid.Items.Refresh ();
-		}
+		
 
 		private void Button_HorseFactories_Refresh_Click (object sender, RoutedEventArgs e)
 		{
@@ -182,6 +176,51 @@ namespace WPFRacecourseSystem
 			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;
 			trainerWindow.OnUpdate += managementSystem.Library.Trainers.Update;
 			trainerWindow.Show ();
+		}
+
+		#endregion
+
+		#region Clear Tables
+		private void Button_Contests_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			ContestsGrid.ItemsSource = null;
+			ContestsGrid.Items.Refresh ();
+		}
+
+		private void Button_HorseFactories_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorseFactoryGrid.ItemsSource = null;
+			HorseFactoryGrid.Items.Refresh ();
+		}
+
+		private void Button_Racecourses_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			RacecourseGrid.ItemsSource = null;
+			RacecourseGrid.Items.Refresh ();
+		}
+
+		private void Button_Horses_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorsesGrid.ItemsSource = null;
+			HorsesGrid.Items.Refresh ();
+		}
+
+		private void Button_HorseOwners_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorseOwnerGrid.ItemsSource = null;
+			HorseOwnerGrid.Items.Refresh ();
+		}
+
+		private void Button_Jockeys_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			JockeyGrid.ItemsSource = null;
+			JockeyGrid.Items.Refresh ();
+		}
+
+		private void Button_Trainers_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			TrainerGrid.ItemsSource = null;
+			TrainerGrid.Items.Refresh ();
 		}
 
 		#endregion

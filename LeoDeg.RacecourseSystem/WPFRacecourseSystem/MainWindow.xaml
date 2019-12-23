@@ -17,7 +17,7 @@
 			<TabItem Header="New Info" Name="NewInfo">
 				<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
 					<Button x:Name="NewInfo_Contest" Content="Contest" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Contest_Click"/>
-					<Button x:Name="NewInfo_HorseFactory" Content="HorseFactory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_HorseFactory_Click"/>
+					<Button x:Name="NewInfo_HorseFactory" Content="Horse Factory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_HorseFactory_Click"/>
 					<Button x:Name="NewInfo_Racecourse" Content="Racecourse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Racecourse_Click"/>
 					<Button x:Name="NewInfo_Horse" Content="Horse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_Horse_Click"/>
 					<Button x:Name="NewInfo_HorseOwner" Content="Horse Owner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="NewInfo_HorseOwner_Click"/>
@@ -60,6 +60,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -84,6 +85,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourse_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourses_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -109,6 +111,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -139,6 +142,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" x:Name="HorseOwnerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="HorseOwnerGrid_MouseDoubleClick">
@@ -160,6 +164,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" x:Name="JockeyGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="JockeyGrid_MouseDoubleClick">
@@ -184,6 +189,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" x:Name="TrainerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">

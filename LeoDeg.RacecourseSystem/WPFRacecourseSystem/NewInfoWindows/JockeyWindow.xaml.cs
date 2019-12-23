@@ -138,6 +138,7 @@ namespace WPFRacecourseSystem
 					jockey.Id = oldJockey.Id;
 					OnUpdate?.Invoke (jockey, oldJockey.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

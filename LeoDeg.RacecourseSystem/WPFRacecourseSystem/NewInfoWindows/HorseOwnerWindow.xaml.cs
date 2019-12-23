@@ -132,6 +132,7 @@ namespace WPFRacecourseSystem
 					horseOwner.Id = oldHorseOwner.Id;
 					OnUpdate?.Invoke (horseOwner, oldHorseOwner.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

@@ -126,6 +126,7 @@ namespace WPFRacecourseSystem
 					horseFactory.Id = oldHorseFactory.Id;
 					OnUpdate?.Invoke (horseFactory, oldHorseFactory.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

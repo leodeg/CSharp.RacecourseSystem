@@ -133,7 +133,7 @@ namespace RacecourseSystem
 			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				var item = db.DbSet.Find (entityId);
-				if (item == null) 
+				if (item == null)
 					throw new ArgumentException (string.Format ("Cannot find entity with id: {0}", entityId));
 				db.Entry (item).CurrentValues.SetValues (entity);
 				db.SaveChanges ();

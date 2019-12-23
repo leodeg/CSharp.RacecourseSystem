@@ -126,6 +126,7 @@ namespace WPFRacecourseSystem
 					racecourse.Id = oldRacecourse.Id;
 					OnUpdate?.Invoke (racecourse, oldRacecourse.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}
