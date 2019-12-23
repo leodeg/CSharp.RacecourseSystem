@@ -40,42 +40,56 @@ namespace WPFRacecourseSystem
 
 		private void Button_Racecourse_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Racecourses.IsEmpty)
+				MessageBox.Show ("Racecourses information is empty.");
 			managementSystem.Library.Racecourses.Load ();
 			RacecourseGrid.ItemsSource = managementSystem.Library.Racecourses.ToBindingList ();
 		}
 
 		private void Button_Contests_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Contests.IsEmpty)
+				MessageBox.Show ("Contests information is empty.");
 			managementSystem.Library.Contests.Load ();
 			ContestsGrid.ItemsSource = managementSystem.Library.Contests.ToBindingList ();
 		}
 
 		private void Button_HorseFactories_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.HorseFactories.IsEmpty)
+				MessageBox.Show ("Horse Factories information is empty.");
 			managementSystem.Library.HorseFactories.Load ();
 			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.ToBindingList ();
 		}
 
 		private void Button_Horses_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Horses.IsEmpty)
+				MessageBox.Show ("Horses information is empty.");
 			managementSystem.Library.Horses.Load ();
 			HorsesGrid.ItemsSource = managementSystem.Library.Horses.ToBindingList ();
 		}
 
 		private void Button_HorseOwners_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.HorseOwners.IsEmpty)
+				MessageBox.Show ("Horse Owners information is empty.");
 			managementSystem.Library.HorseOwners.Load ();
 			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.ToBindingList ();
 		}
 
 		private void Button_Jockeys_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Jockeys.IsEmpty)
+				MessageBox.Show ("Jockeys information is empty.");
 			managementSystem.Library.Jockeys.Load ();
 			JockeyGrid.ItemsSource = managementSystem.Library.Jockeys.ToBindingList ();
 		}
 
 		private void Button_Trainers_Refresh_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Trainers.IsEmpty)
+				MessageBox.Show ("Trainers information is empty.");
 			managementSystem.Library.Trainers.Load ();
 			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.ToBindingList ();
 		}

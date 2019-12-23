@@ -147,6 +147,7 @@ namespace WPFRacecourseSystem
 			{
 				OnAdd?.Invoke (GetHorse ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 
@@ -161,18 +162,24 @@ namespace WPFRacecourseSystem
 
 		private void buttonRefreshHorseFactories_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.HorseFactories.IsEmpty)
+				MessageBox.Show ("Horse Factories information is empty.");
 			managementSystem.Library.HorseFactories.Load ();
 			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.GetArray ();
 		}
 
 		private void buttonRefreshHorseOwners_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.HorseOwners.IsEmpty)
+				MessageBox.Show ("Horse Owners information is empty.");
 			managementSystem.Library.HorseOwners.Load ();
 			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.GetArray ();
 		}
 
 		private void buttonRefreshTrainers_Click (object sender, RoutedEventArgs e)
 		{
+			if (managementSystem.Library.Trainers.IsEmpty)
+				MessageBox.Show ("Trainers information is empty.");
 			managementSystem.Library.Trainers.Load ();
 			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.GetArray ();
 		}

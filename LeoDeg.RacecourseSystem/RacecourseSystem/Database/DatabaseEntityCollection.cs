@@ -23,6 +23,8 @@ namespace RacecourseSystem
 			Context = new DatabaseContext<TEntity> ();
 		}
 
+		public bool IsEmpty { get { return GetCount () < 1; } }
+
 		public void Dispose ()
 		{
 			Context.Dispose ();

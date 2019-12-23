@@ -105,6 +105,7 @@ namespace WPFRacecourseSystem
 			{
 				OnAdd?.Invoke (GetContest ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 
