@@ -8,17 +8,17 @@
         Title="ContestWindow" Height="380" Width="364" MinWidth="364" MaxWidth="364" MinHeight="380" MaxHeight="380">
 	<Grid>
 		<StackPanel Orientation="Vertical" Margin="10 10">
-			<Label  Content="Title"/>
-			<TextBox x:Name="textBoxTitle" Width="auto" Height="26"/>
+			<Label  Content="Title *"/>
+			<TextBox x:Name="textBoxTitle" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
 
 			<Label  Content="Horse Breed"/>
-			<TextBox x:Name="textBoxHorseBreed" Width="auto" Height="26"/>
+			<TextBox x:Name="textBoxHorseBreed" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
 
-			<Label  Content="Prize Pool"/>
-			<TextBox x:Name="textBoxPrizePool" Width="auto" Height="26"/>
+			<Label  Content="Prize Pool *"/>
+			<TextBox x:Name="textBoxPrizePool" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
 
-			<Label  Content="Date Time"/>
-			<DatePicker x:Name="datePickerDateTime" Width="auto" Height="26"/>
+			<Label  Content="Date Time *" BorderBrush="Black"/>
+			<DatePicker x:Name="datePickerDateTime" Width="auto" Height="26" BorderBrush="#FFA0A0A0"/>
 
 			<Button Content="New" Name="buttonNew" Margin="0 10" Height="40" Click="buttonNew_Click"/>
 			<Button Content="Update" Name="buttonUpdate" Margin="0 5" Height="40" Click="buttonUpdate_Click"/>

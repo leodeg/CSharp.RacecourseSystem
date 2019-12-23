@@ -23,6 +23,8 @@ namespace RacecourseSystem
 			Context = new DatabaseContext<TEntity> ();
 		}
 
+		public bool IsEmpty { get { return GetCount () < 1; } }
+
 		public void Dispose ()
 		{
 			Context.Dispose ();
@@ -42,6 +44,14 @@ namespace RacecourseSystem
 		public BindingList<TEntity> ToBindingList ()
 		{
 			return Context.DbSet.Local.ToBindingList ();
+		}
+
+		/// <summary>
+		/// Return binding list of the current entity.
+		/// </summary>
+		public Array GetArray ()
+		{
+			return Context.DbSet.Local.ToArray<TEntity> ();
 		}
 
 		/// <summary>

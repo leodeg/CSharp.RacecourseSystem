@@ -18,28 +18,29 @@ namespace WPFRacecourseSystem
 	/// <summary>
 	/// Interaction logic for JockeyWindow.xaml
 	/// </summary>
-	public partial class TrainerWindow : Window
+	public partial class JockeyWindow : Window
 	{
-		private Trainer oldTrainer;
+		private Jockey oldJockey;
 
-		public Action<Trainer> OnAdd;
-		public Action<Trainer, int> OnUpdate;
+		public Action<Jockey> OnAdd;
+		public Action<Jockey, int> OnUpdate;
 
-		public TrainerWindow ()
+		public JockeyWindow ()
 		{
 			InitializeComponent ();
 			AssignComboBoxValues ();
+			buttonUpdate.IsEnabled = false;
 		}
 
-		public TrainerWindow (Trainer trainerToChange)
+		public JockeyWindow (Jockey jockeyToChange)
 		{
-			if (trainerToChange == null)
+			if (jockeyToChange == null)
 				throw new ArgumentNullException ();
 
 			InitializeComponent ();
 			AssignComboBoxValues ();
 
-			oldTrainer = trainerToChange;
+			oldJockey = jockeyToChange;
 			ShowOldContestInformation ();
 		}
 
@@ -50,21 +51,21 @@ namespace WPFRacecourseSystem
 
 		private void ShowOldContestInformation ()
 		{
-			textBoxFirstName.Text = oldTrainer.FirstName;
-			textBoxLastName.Text = oldTrainer.LastName;
-			textBoxMiddleName.Text = oldTrainer.MiddleName;
-			textBoxCountry.Text = oldTrainer.Country;
-			datePickerDateOfBirth.SelectedDate = oldTrainer.DateOfBirth;
-			textBoxLicense.Text = oldTrainer.License;
-			textBoxRank.Text = oldTrainer.Rank;
-			textBoxAdditionalInfo.Text = oldTrainer.AdditionalInfo;
+			textBoxFirstName.Text = oldJockey.FirstName;
+			textBoxLastName.Text = oldJockey.LastName;
+			textBoxMiddleName.Text = oldJockey.MiddleName;
+			textBoxCountry.Text = oldJockey.Country;
+			datePickerDateOfBirth.SelectedDate = oldJockey.DateOfBirth;
+			textBoxLicense.Text = oldJockey.License;
+			textBoxRank.Text = oldJockey.Rank;
+			textBoxAdditionalInfo.Text = oldJockey.AdditionalInfo;
 		}
 
-		private Trainer GetTrainer ()
+		private Jockey GetJockey ()
 		{
 			try
 			{
-				return new Trainer ()
+				return new Jockey ()
 				{
 					FirstName = textBoxFirstName.Text,
 					LastName = textBoxLastName.Text,
@@ -121,18 +122,19 @@ namespace WPFRacecourseSystem
 		{
 			if (CheckInformationFields ())
 			{
-				OnAdd?.Invoke (GetTrainer ());
+				OnAdd?.Invoke (GetJockey ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 
 		private void buttonUpdate_Click (object sender, RoutedEventArgs e)
 		{
-			if (oldTrainer != null)
+			if (oldJockey != null)
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetTrainer (), oldTrainer.Id);
+					OnUpdate?.Invoke (GetJockey (), oldJockey.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
 				}
 			}

@@ -28,6 +28,7 @@ namespace WPFRacecourseSystem
 		public HorseFactoryWindow ()
 		{
 			InitializeComponent ();
+			buttonUpdate.IsEnabled = false;
 		}
 
 		public HorseFactoryWindow (HorseFactory horseFactoryToChange)
@@ -111,6 +112,7 @@ namespace WPFRacecourseSystem
 			{
 				OnAdd?.Invoke (GetHorseFactory ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 

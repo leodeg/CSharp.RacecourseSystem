@@ -16,45 +16,47 @@ using System.Windows.Shapes;
 namespace WPFRacecourseSystem
 {
 	/// <summary>
-	/// Interaction logic for RacecourseWindow.xaml
+	/// Interaction logic for ContestWindow.xaml
 	/// </summary>
-	public partial class RacecourseWindow : Window
+	public partial class ContestWindow : Window
 	{
-		private Racecourse oldHorseFactory;
+		private Contest oldContest;
 
-		public Action<Racecourse> OnAdd;
-		public Action<Racecourse, int> OnUpdate;
+		public Action<Contest> OnAdd;
+		public Action<Contest, int> OnUpdate;
 
-		public RacecourseWindow ()
+
+		public ContestWindow ()
 		{
 			InitializeComponent ();
+			buttonUpdate.IsEnabled = false;
 		}
 
-		public RacecourseWindow (Racecourse horseFactoryToChange)
+		public ContestWindow (Contest contestToUpdate)
 		{
 			InitializeComponent ();
-			oldHorseFactory = horseFactoryToChange;
+			oldContest = contestToUpdate;
 			ShowOldContestInformation ();
 		}
 
 		private void ShowOldContestInformation ()
 		{
-			textBoxName.Text = oldHorseFactory.Name;
-			textBoxCountry.Text = oldHorseFactory.Country;
-			textBoxHorseAmount.Text = oldHorseFactory.HorseAmount.ToString ();
-			textBoxAdditionalInfo.Text = oldHorseFactory.AdditionalInfo;
+			textBoxTitle.Text = oldContest.Title;
+			textBoxHorseBreed.Text = oldContest.HorsesBreed;
+			textBoxPrizePool.Text = oldContest.PrizePool.ToString ();
+			datePickerDateTime.SelectedDate = oldContest.DateTime;
 		}
 
-		private Racecourse GetHorseFactory ()
+		private Contest GetContest ()
 		{
 			try
 			{
-				return new Racecourse ()
+				return new Contest ()
 				{
-					Name = textBoxName.Text,
-					Country = textBoxCountry.Text ?? "Empty",
-					HorseAmount = GetHorseAmount (),
-					AdditionalInfo = textBoxAdditionalInfo.Text ?? "Empty"
+					Title = textBoxTitle.Text,
+					HorsesBreed = textBoxHorseBreed.Text ?? "Empty",
+					DateTime = datePickerDateTime.SelectedDate.Value,
+					PrizePool = long.Parse (textBoxPrizePool.Text)
 				};
 			}
 			catch (ArgumentNullException ex)
@@ -74,31 +76,23 @@ namespace WPFRacecourseSystem
 			}
 		}
 
-		private int GetHorseAmount ()
-		{
-			int horseAmount;
-			try
-			{
-				horseAmount = int.Parse (textBoxHorseAmount.Text);
-			}
-			catch (Exception)
-			{
-				horseAmount = 0;
-			}
-			return horseAmount;
-		}
-
 		private bool CheckInformationFields ()
 		{
-			if (textBoxName.Text.Length < 1)
+			if (textBoxTitle.Text.Length < 1)
 			{
-				MessageBox.Show ("Name is empty.");
+				MessageBox.Show ("Title is empty.");
 				return false;
 			}
 
-			if (textBoxAdditionalInfo.Text.Length > 255)
+			if (!datePickerDateTime.SelectedDate.HasValue)
 			{
-				MessageBox.Show ("Additional Information is too long. The maximum size is a 255 characters.");
+				MessageBox.Show ("Date time is empty.");
+				return false;
+			}
+
+			if (!long.TryParse (textBoxPrizePool.Text, out long result))
+			{
+				MessageBox.Show ("Prize pool is empty.");
 				return false;
 			}
 
@@ -109,18 +103,19 @@ namespace WPFRacecourseSystem
 		{
 			if (CheckInformationFields ())
 			{
-				OnAdd?.Invoke (GetHorseFactory ());
+				OnAdd?.Invoke (GetContest ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 
 		private void buttonUpdate_Click (object sender, RoutedEventArgs e)
 		{
-			if (oldHorseFactory != null)
+			if (oldContest != null)
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetHorseFactory (), oldHorseFactory.Id);
+					OnUpdate?.Invoke (GetContest (), oldContest.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
 				}
 			}

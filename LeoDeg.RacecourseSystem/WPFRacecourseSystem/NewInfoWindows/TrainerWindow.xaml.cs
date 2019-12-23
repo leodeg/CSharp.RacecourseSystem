@@ -16,30 +16,31 @@ using System.Windows.Shapes;
 namespace WPFRacecourseSystem
 {
 	/// <summary>
-	/// Interaction logic for HorseOwnerWindow.xaml
+	/// Interaction logic for JockeyWindow.xaml
 	/// </summary>
-	public partial class HorseOwnerWindow : Window
+	public partial class TrainerWindow : Window
 	{
-		private HorseOwner oldHorseOwner;
+		private Trainer oldTrainer;
 
-		public Action<HorseOwner> OnAdd;
-		public Action<HorseOwner, int> OnUpdate;
+		public Action<Trainer> OnAdd;
+		public Action<Trainer, int> OnUpdate;
 
-		public HorseOwnerWindow ()
+		public TrainerWindow ()
 		{
 			InitializeComponent ();
 			AssignComboBoxValues ();
+			buttonUpdate.IsEnabled = false;
 		}
 
-		public HorseOwnerWindow (HorseOwner horseOwnerToChange)
+		public TrainerWindow (Trainer trainerToChange)
 		{
-			if (horseOwnerToChange == null)
-				throw new ArgumentNullException ("Horse owner must be not null.");
+			if (trainerToChange == null)
+				throw new ArgumentNullException ();
 
 			InitializeComponent ();
 			AssignComboBoxValues ();
 
-			oldHorseOwner = horseOwnerToChange;
+			oldTrainer = trainerToChange;
 			ShowOldContestInformation ();
 		}
 
@@ -50,25 +51,31 @@ namespace WPFRacecourseSystem
 
 		private void ShowOldContestInformation ()
 		{
-			textBoxFirstName.Text = oldHorseOwner.FirstName;
-			textBoxLastName.Text = oldHorseOwner.LastName;
-			textBoxMiddleName.Text = oldHorseOwner.MiddleName;
-			textBoxCountry.Text = oldHorseOwner.Country;
-			datePickerDateOfBirth.SelectedDate = oldHorseOwner.DateOfBirth;
+			textBoxFirstName.Text = oldTrainer.FirstName;
+			textBoxLastName.Text = oldTrainer.LastName;
+			textBoxMiddleName.Text = oldTrainer.MiddleName;
+			textBoxCountry.Text = oldTrainer.Country;
+			datePickerDateOfBirth.SelectedDate = oldTrainer.DateOfBirth;
+			textBoxLicense.Text = oldTrainer.License;
+			textBoxRank.Text = oldTrainer.Rank;
+			textBoxAdditionalInfo.Text = oldTrainer.AdditionalInfo;
 		}
 
-		private HorseOwner GetHorseOwner ()
+		private Trainer GetTrainer ()
 		{
 			try
 			{
-				return new HorseOwner ()
+				return new Trainer ()
 				{
 					FirstName = textBoxFirstName.Text,
 					LastName = textBoxLastName.Text,
-					MiddleName = textBoxMiddleName.Text ?? "Empty",
-					Country = textBoxCountry.Text ?? "Empty",
+					MiddleName = textBoxMiddleName.Text,
+					Country = textBoxCountry.Text,
 					Sex = (Sex)comboBoxSex.SelectedIndex,
-					DateOfBirth = datePickerDateOfBirth.SelectedDate.Value
+					DateOfBirth = datePickerDateOfBirth.SelectedDate.Value,
+					License = textBoxLicense.Text,
+					Rank = textBoxRank.Text,
+					AdditionalInfo = textBoxAdditionalInfo.Text
 				};
 			}
 			catch (ArgumentNullException ex)
@@ -115,18 +122,19 @@ namespace WPFRacecourseSystem
 		{
 			if (CheckInformationFields ())
 			{
-				OnAdd?.Invoke (GetHorseOwner ());
+				OnAdd?.Invoke (GetTrainer ());
 				MessageBox.Show ("Contest was successfully added to the database.");
+				this.Close ();
 			}
 		}
 
 		private void buttonUpdate_Click (object sender, RoutedEventArgs e)
 		{
-			if (oldHorseOwner != null)
+			if (oldTrainer != null)
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetHorseOwner (), oldHorseOwner.Id);
+					OnUpdate?.Invoke (GetTrainer (), oldTrainer.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
 				}
 			}
