@@ -32,6 +32,7 @@
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
 						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Refresh_Click"/>
+						<Button Content="Clear Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Clear_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 

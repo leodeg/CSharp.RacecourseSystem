@@ -156,15 +156,4 @@ namespace RacecourseSystem
 			}
 		}
 	}
-
-	public class HorseCollection : DatabaseEntityCollection<Horse>
-	{
-		/// <summary>
-		/// Return binding list of the current entity.
-		/// </summary>
-		public override Array GetArray ()
-		{
-			return Context.DbSet.Include (x => x.HorseFactory).Include (x => x.Owner).Include (x => x.Trainer).ToArray ();
-		}
-	}
 }

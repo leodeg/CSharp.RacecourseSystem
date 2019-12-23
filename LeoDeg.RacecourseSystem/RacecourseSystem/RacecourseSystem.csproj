@@ -65,6 +65,7 @@
     <Compile Include="Database\DatabaseEntityCollection.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
     <Compile Include="Database\ExtensionsMethods.cs" />
+    <Compile Include="Database\HorseCollection.cs" />
     <Compile Include="Database\HorseFactories.cs">
       <DependentUpon>RacecourseModel.tt</DependentUpon>
     </Compile>
