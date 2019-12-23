@@ -128,8 +128,11 @@ namespace WPFRacecourseSystem
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetHorseOwner (), oldHorseOwner.Id);
+					HorseOwner horseOwner = GetHorseOwner ();
+					horseOwner.Id = oldHorseOwner.Id;
+					OnUpdate?.Invoke (horseOwner, oldHorseOwner.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

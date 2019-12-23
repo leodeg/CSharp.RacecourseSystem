@@ -11,7 +11,7 @@ namespace RacecourseSystem.Tests
 	[TestFixture]
 	public class RacecourseManagementSystemTests
 	{
-		RacecourseManagementSystem managementSystem;
+		private RacecourseManagementSystem managementSystem;
 
 		[SetUp]
 		public void SetUp ()
@@ -22,7 +22,7 @@ namespace RacecourseSystem.Tests
 		[Test]
 		public void AddCompany_Clear_GetCount_Test ()
 		{
-			
+
 		}
 	}
 }

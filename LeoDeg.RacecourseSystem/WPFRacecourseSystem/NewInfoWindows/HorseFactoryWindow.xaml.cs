@@ -122,8 +122,11 @@ namespace WPFRacecourseSystem
 			{
 				if (CheckInformationFields ())
 				{
-					OnUpdate?.Invoke (GetHorseFactory (), oldHorseFactory.Id);
+					HorseFactory horseFactory = GetHorseFactory ();
+					horseFactory.Id = oldHorseFactory.Id;
+					OnUpdate?.Invoke (horseFactory, oldHorseFactory.Id);
 					MessageBox.Show ("Contest was successfully updated in the database.");
+					this.Close ();
 				}
 			}
 		}

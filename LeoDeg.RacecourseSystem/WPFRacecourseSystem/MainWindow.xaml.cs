@@ -1,11 +1,11 @@
 ﻿using RacecourseSystem;
+using RacecourseSystem.Database;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 
 namespace WPFRacecourseSystem
 {
@@ -14,15 +14,14 @@ namespace WPFRacecourseSystem
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		RacecourseManagementSystem managementSystem;
-
-		ContestWindow contestWindow;
-		HorseFactoryWindow horseFactoryWindow;
-		RacecourseWindow racecourseWindow;
-		HorseWindow horseWindow;
-		HorseOwnerWindow horseOwnerWindow;
-		JockeyWindow jockeyWindow;
-		TrainerWindow trainerWindow;
+		private RacecourseManagementSystem managementSystem;
+		private ContestWindow contestWindow;
+		private HorseFactoryWindow horseFactoryWindow;
+		private RacecourseWindow racecourseWindow;
+		private HorseWindow horseWindow;
+		private HorseOwnerWindow horseOwnerWindow;
+		private JockeyWindow jockeyWindow;
+		private TrainerWindow trainerWindow;
 
 
 		public MainWindow ()
@@ -42,32 +41,47 @@ namespace WPFRacecourseSystem
 		{
 			if (managementSystem.Library.Racecourses.IsEmpty)
 				MessageBox.Show ("Racecourses information is empty.");
+
+			RacecourseGrid.ItemsSource = null;
 			managementSystem.Library.Racecourses.Load ();
-			RacecourseGrid.ItemsSource = managementSystem.Library.Racecourses.ToBindingList ();
+			RacecourseGrid.ItemsSource = managementSystem.Library.Racecourses.GetArray ();
 		}
+
+
 
 		private void Button_Contests_Refresh_Click (object sender, RoutedEventArgs e)
 		{
 			if (managementSystem.Library.Contests.IsEmpty)
 				MessageBox.Show ("Contests information is empty.");
 			managementSystem.Library.Contests.Load ();
-			ContestsGrid.ItemsSource = managementSystem.Library.Contests.ToBindingList ();
+
+			ContestsGrid.ItemsSource = null;
+			ContestsGrid.Items.Refresh ();
+			ContestsGrid.ItemsSource = managementSystem.Library.Contests.GetArray ();
 		}
+
+		
 
 		private void Button_HorseFactories_Refresh_Click (object sender, RoutedEventArgs e)
 		{
 			if (managementSystem.Library.HorseFactories.IsEmpty)
 				MessageBox.Show ("Horse Factories information is empty.");
 			managementSystem.Library.HorseFactories.Load ();
-			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.ToBindingList ();
+
+			HorseFactoryGrid.ItemsSource = null;
+			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.GetArray ();
+			HorseFactoryGrid.Items.Refresh ();
 		}
 
 		private void Button_Horses_Refresh_Click (object sender, RoutedEventArgs e)
 		{
 			if (managementSystem.Library.Horses.IsEmpty)
 				MessageBox.Show ("Horses information is empty.");
+
+			HorsesGrid.ItemsSource = null;
 			managementSystem.Library.Horses.Load ();
-			HorsesGrid.ItemsSource = managementSystem.Library.Horses.ToBindingList ();
+			HorsesGrid.ItemsSource = managementSystem.Library.Horses.GetArray ();
+			HorsesGrid.Items.Refresh ();
 		}
 
 		private void Button_HorseOwners_Refresh_Click (object sender, RoutedEventArgs e)
@@ -75,7 +89,10 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.HorseOwners.IsEmpty)
 				MessageBox.Show ("Horse Owners information is empty.");
 			managementSystem.Library.HorseOwners.Load ();
-			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.ToBindingList ();
+
+			HorseOwnerGrid.ItemsSource = null;
+			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.GetArray ();
+			HorseOwnerGrid.Items.Refresh ();
 		}
 
 		private void Button_Jockeys_Refresh_Click (object sender, RoutedEventArgs e)
@@ -83,7 +100,10 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Jockeys.IsEmpty)
 				MessageBox.Show ("Jockeys information is empty.");
 			managementSystem.Library.Jockeys.Load ();
-			JockeyGrid.ItemsSource = managementSystem.Library.Jockeys.ToBindingList ();
+
+			JockeyGrid.ItemsSource = null;
+			JockeyGrid.ItemsSource = managementSystem.Library.Jockeys.GetArray ();
+			JockeyGrid.Items.Refresh ();
 		}
 
 		private void Button_Trainers_Refresh_Click (object sender, RoutedEventArgs e)
@@ -91,7 +111,10 @@ namespace WPFRacecourseSystem
 			if (managementSystem.Library.Trainers.IsEmpty)
 				MessageBox.Show ("Trainers information is empty.");
 			managementSystem.Library.Trainers.Load ();
-			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.ToBindingList ();
+
+			TrainerGrid.ItemsSource = null;
+			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.GetArray ();
+			TrainerGrid.Items.Refresh ();
 		}
 
 		#endregion
@@ -153,6 +176,51 @@ namespace WPFRacecourseSystem
 			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;
 			trainerWindow.OnUpdate += managementSystem.Library.Trainers.Update;
 			trainerWindow.Show ();
+		}
+
+		#endregion
+
+		#region Clear Tables
+		private void Button_Contests_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			ContestsGrid.ItemsSource = null;
+			ContestsGrid.Items.Refresh ();
+		}
+
+		private void Button_HorseFactories_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorseFactoryGrid.ItemsSource = null;
+			HorseFactoryGrid.Items.Refresh ();
+		}
+
+		private void Button_Racecourses_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			RacecourseGrid.ItemsSource = null;
+			RacecourseGrid.Items.Refresh ();
+		}
+
+		private void Button_Horses_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorsesGrid.ItemsSource = null;
+			HorsesGrid.Items.Refresh ();
+		}
+
+		private void Button_HorseOwners_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			HorseOwnerGrid.ItemsSource = null;
+			HorseOwnerGrid.Items.Refresh ();
+		}
+
+		private void Button_Jockeys_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			JockeyGrid.ItemsSource = null;
+			JockeyGrid.Items.Refresh ();
+		}
+
+		private void Button_Trainers_Clear_Click (object sender, RoutedEventArgs e)
+		{
+			TrainerGrid.ItemsSource = null;
+			TrainerGrid.Items.Refresh ();
 		}
 
 		#endregion
@@ -238,5 +306,7 @@ namespace WPFRacecourseSystem
 		}
 
 		#endregion
+
+		
 	}
 }

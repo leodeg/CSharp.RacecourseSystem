@@ -23,6 +23,11 @@ namespace RacecourseSystem.Context
 		/// Set of entities that provide access to the database table.
 		/// </summary>
 		public DbSet<T> DbSet { get; set; }
+
+		internal object CreateObjectSet<T1> ()
+		{
+			throw new NotImplementedException ();
+		}
 	}
 
 	public class DatabaseContext : DbContext

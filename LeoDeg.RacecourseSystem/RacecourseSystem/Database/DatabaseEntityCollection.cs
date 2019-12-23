@@ -16,7 +16,7 @@ namespace RacecourseSystem
 	/// <typeparam name="TEntity">class for base context that is DbContext wrapper</typeparam>
 	public class DatabaseEntityCollection<TEntity> : IDisposable where TEntity : class
 	{
-		private DatabaseContext<TEntity> Context { get; set; }
+		protected DatabaseContext<TEntity> Context { get; set; }
 
 		public DatabaseEntityCollection ()
 		{
@@ -49,7 +49,7 @@ namespace RacecourseSystem
 		/// <summary>
 		/// Return binding list of the current entity.
 		/// </summary>
-		public Array GetArray ()
+		public virtual Array GetArray ()
 		{
 			return Context.DbSet.Local.ToArray<TEntity> ();
 		}
@@ -71,11 +71,11 @@ namespace RacecourseSystem
 		/// Get entity to the database.
 		/// </summary>
 		/// <param name="id">id of the entity</param>
-		public TEntity Get (int id)
+		public TEntity Get<TEntity> (int id) where TEntity : class, ID
 		{
 			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
-				return db.DbSet.Find (id);
+				return db.DbSet.Where (x => x.Id == id).FirstOrDefault ();
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace RacecourseSystem
 			}
 		}
 
-		public BindingList<TEntity> GetBindingList ()
+		public virtual BindingList<TEntity> GetBindingList ()
 		{
 			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
@@ -133,8 +133,10 @@ namespace RacecourseSystem
 			using (DatabaseContext<TEntity> db = new DatabaseContext<TEntity> ())
 			{
 				var item = db.DbSet.Find (entityId);
-				if (item == null) throw new ArgumentException (string.Format ("Cannot find entity with id: {0}", entityId));
-				db.Entry (entity).CurrentValues.SetValues (entity);
+				if (item == null)
+					throw new ArgumentException (string.Format ("Cannot find entity with id: {0}", entityId));
+				db.Entry (item).CurrentValues.SetValues (entity);
+				db.SaveChanges ();
 			}
 		}
 
