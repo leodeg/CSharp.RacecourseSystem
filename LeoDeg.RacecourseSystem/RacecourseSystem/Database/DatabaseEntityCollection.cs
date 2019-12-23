@@ -45,6 +45,14 @@ namespace RacecourseSystem
 		}
 
 		/// <summary>
+		/// Return binding list of the current entity.
+		/// </summary>
+		public Array GetArray ()
+		{
+			return Context.DbSet.Local.ToArray<TEntity> ();
+		}
+
+		/// <summary>
 		/// Add entity to the database.
 		/// </summary>
 		/// <param name="entity"></param>

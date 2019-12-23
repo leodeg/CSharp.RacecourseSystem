@@ -161,19 +161,19 @@ namespace WPFRacecourseSystem
 		private void buttonRefreshHorseFactories_Click (object sender, RoutedEventArgs e)
 		{
 			managementSystem.Library.HorseFactories.Load ();
-			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.GetBindingList ();
+			HorseFactoryGrid.ItemsSource = managementSystem.Library.HorseFactories.GetArray ();
 		}
 
 		private void buttonRefreshHorseOwners_Click (object sender, RoutedEventArgs e)
 		{
 			managementSystem.Library.HorseOwners.Load ();
-			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.GetBindingList ();
+			HorseOwnerGrid.ItemsSource = managementSystem.Library.HorseOwners.GetArray ();
 		}
 
 		private void buttonRefreshTrainers_Click (object sender, RoutedEventArgs e)
 		{
 			managementSystem.Library.Trainers.Load ();
-			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.GetBindingList ();
+			TrainerGrid.ItemsSource = managementSystem.Library.Trainers.GetArray ();
 		}
 	}
 }

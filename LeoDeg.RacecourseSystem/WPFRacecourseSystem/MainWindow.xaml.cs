@@ -124,9 +124,7 @@ namespace WPFRacecourseSystem
 			horseWindow = new HorseWindow ();
 			horseWindow.OnAdd += managementSystem.Library.Horses.Add;
 			horseWindow.OnUpdate += managementSystem.Library.Horses.Update;
-
 			horseWindow.managementSystem = managementSystem;
-
 			horseWindow.Show ();
 		}
 
@@ -149,6 +147,81 @@ namespace WPFRacecourseSystem
 		private void NewInfo_Trainer_Click (object sender, RoutedEventArgs e)
 		{
 			trainerWindow = new TrainerWindow ();
+			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;
+			trainerWindow.OnUpdate += managementSystem.Library.Trainers.Update;
+			trainerWindow.Show ();
+		}
+
+		#endregion
+
+		#region Grids Double Click Events
+
+		private void ContestsGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			Contest contest = ContestsGrid.SelectedItem as Contest;
+			contestWindow = new ContestWindow (contest);
+			contestWindow.Title = string.Format ("Contest - Id: {0}, Title: {1}", contest.Id, contest.Title);
+			contestWindow.OnAdd += managementSystem.Library.Contests.Add;
+			contestWindow.OnUpdate += managementSystem.Library.Contests.Update;
+			contestWindow.Show ();
+		}
+
+		private void HorseFactoryTab_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			HorseFactory horseFactory = HorseFactoryGrid.SelectedItem as HorseFactory;
+			horseFactoryWindow = new HorseFactoryWindow (horseFactory);
+			horseFactoryWindow.Title = string.Format ("Horse Factory - Id: {0}, Name: {1}", horseFactory.Id, horseFactory.Name);
+			horseFactoryWindow.OnAdd += managementSystem.Library.HorseFactories.Add;
+			horseFactoryWindow.OnUpdate += managementSystem.Library.HorseFactories.Update;
+			horseFactoryWindow.Show ();
+		}
+
+		private void RacecourseGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			Racecourse racecourse = RacecourseGrid.SelectedItem as Racecourse;
+			racecourseWindow = new RacecourseWindow (racecourse);
+			racecourseWindow.Title = string.Format ("Racecourse - Id: {0}, Name: {1}", racecourse.Id, racecourse.Name);
+			racecourseWindow.OnAdd += managementSystem.Library.Racecourses.Add;
+			racecourseWindow.OnUpdate += managementSystem.Library.Racecourses.Update;
+			racecourseWindow.Show ();
+		}
+
+		private void HorsesGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			Horse horse = HorsesGrid.SelectedItem as Horse;
+			horseWindow = new HorseWindow (horse);
+			horseWindow.Title = string.Format ("Horse - Id: {0}, Name: {1}", horse.Id, horse.Name);
+			horseWindow.OnAdd += managementSystem.Library.Horses.Add;
+			horseWindow.OnUpdate += managementSystem.Library.Horses.Update;
+			horseWindow.managementSystem = managementSystem;
+			horseWindow.Show ();
+		}
+
+		private void HorseOwnerGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			HorseOwner horseOwner = HorseOwnerGrid.SelectedItem as HorseOwner;
+			horseOwnerWindow = new HorseOwnerWindow (horseOwner);
+			horseOwnerWindow.Title = string.Format ("Horse Owner - Id: {0}, Name: {1}", horseOwner.Id, horseOwner.FirstName + " " + horseOwner.LastName);
+			horseOwnerWindow.OnAdd += managementSystem.Library.HorseOwners.Add;
+			horseOwnerWindow.OnUpdate += managementSystem.Library.HorseOwners.Update;
+			horseOwnerWindow.Show ();
+		}
+
+		private void JockeyGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			Jockey jockey = JockeyGrid.SelectedItem as Jockey;
+			jockeyWindow = new JockeyWindow (jockey);
+			jockeyWindow.Title = string.Format ("Jockey - Id: {0}, Name: {1}", jockey.Id, jockey.FirstName + " " + jockey.LastName);
+			jockeyWindow.OnAdd += managementSystem.Library.Jockeys.Add;
+			jockeyWindow.OnUpdate += managementSystem.Library.Jockeys.Update;
+			jockeyWindow.Show ();
+		}
+
+		private void TrainerGrid_MouseDoubleClick (object sender, MouseButtonEventArgs e)
+		{
+			Trainer trainer = TrainerGrid.SelectedItem as Trainer;
+			trainerWindow = new TrainerWindow (trainer);
+			trainerWindow.Title = string.Format ("Jockey - Id: {0}, Name: {1}", trainer.Id, trainer.FirstName + " " + trainer.LastName);
 			trainerWindow.OnAdd += managementSystem.Library.Trainers.Add;
 			trainerWindow.OnUpdate += managementSystem.Library.Trainers.Update;
 			trainerWindow.Show ();

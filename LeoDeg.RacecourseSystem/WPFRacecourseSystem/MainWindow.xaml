@@ -31,8 +31,7 @@
 			<TabItem Header="Contests" Name="ContestsTab">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Refresh_Click"/>
-						<Button x:Name="buttonChangeContestInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Contests_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -40,7 +39,7 @@
 						HorizontalAlignment="Stretch" 
 						CanUserAddRows="False" 
 						CanUserDeleteRows="False" 
-						CanUserResizeRows="False" IsReadOnly="True">
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="ContestsGrid_MouseDoubleClick">
 							<DataGrid.Columns>
 								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
 								<DataGridTextColumn Binding="{Binding Title}" Header="Title" Width="*"/>
@@ -56,11 +55,10 @@
 				</StackPanel>
 			</TabItem>
 
-			<TabItem Header="Horse Factories" Name="HorseFactoryTab" HorizontalAlignment="Left" Width="97">
+			<TabItem Header="Horse Factories" Name="HorseFactoryTab" HorizontalAlignment="Left" Width="97" MouseDoubleClick="HorseFactoryTab_MouseDoubleClick">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Refresh_Click"/>
-						<Button x:Name="buttonChangeFactoriesInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseFactories_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -84,8 +82,7 @@
 			<TabItem Header="Racecourses" Name="RacecourseTab">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourse_Refresh_Click"/>
-						<Button x:Name="buttonChangeRacecourseInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Racecourse_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -93,7 +90,7 @@
 						HorizontalAlignment="Stretch" 
 						CanUserAddRows="False" 
 						CanUserDeleteRows="False" 
-						CanUserResizeRows="False" IsReadOnly="True">
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="RacecourseGrid_MouseDoubleClick">
 							<DataGrid.Columns>
 								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.1*"/>
 								<DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="0.30*"/>
@@ -110,8 +107,7 @@
 			<TabItem Header="Horses">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Refresh_Click"/>
-						<Button x:Name="buttonChangeHorsesInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Horses_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" 
@@ -119,7 +115,7 @@
 						HorizontalAlignment="Stretch" 
 						CanUserAddRows="False" 
 						CanUserDeleteRows="False" 
-						CanUserResizeRows="False" IsReadOnly="True">
+						CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="HorsesGrid_MouseDoubleClick">
 							<DataGrid.Columns>
 								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
 								<DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="*"/>
@@ -141,11 +137,10 @@
 			<TabItem Header="Horse Owners">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Refresh_Click"/>
-						<Button x:Name="buttonChangeHorseOwnersInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_HorseOwners_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
-						<DataGrid AutoGenerateColumns="False" x:Name="HorseOwnerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+						<DataGrid AutoGenerateColumns="False" x:Name="HorseOwnerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="HorseOwnerGrid_MouseDoubleClick">
 							<DataGrid.Columns>
 								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
 								<DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="*"/>
@@ -163,11 +158,10 @@
 			<TabItem Header="Jockeys">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Refresh_Click"/>
-						<Button x:Name="buttonChangeJockeysInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Jockeys_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
-						<DataGrid AutoGenerateColumns="False" x:Name="JockeyGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+						<DataGrid AutoGenerateColumns="False" x:Name="JockeyGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="JockeyGrid_MouseDoubleClick">
 							<DataGrid.Columns>
 								<DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="0.30*"/>
 								<DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="*"/>
@@ -188,8 +182,7 @@
 			<TabItem Header="Trainers">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 2">
-						<Button Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Refresh_Click"/>
-						<Button x:Name="buttonChangeTrainersInfo" Content="Change Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0"/>
+						<Button Content="Refresh Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="30" Margin="5,0" Click="Button_Trainers_Refresh_Click"/>
 					</StackPanel>
 					<Grid Background="#FFE5E5E5">
 						<DataGrid AutoGenerateColumns="False" x:Name="TrainerGrid" HorizontalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
